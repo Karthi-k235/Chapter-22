@@ -972,57 +972,66 @@ html, body {
   color: var(--blush-pink-deep);
 }
 
-/* Completion Banner */
+/* Final Mystery Unlock Banner */
 .completion-banner {
-  background: rgba(255, 253, 249, 0.95);
-  border: 2px solid var(--border-gold);
+  background: #FFFDF9;
+  border: 1.5px solid rgba(243, 213, 138, 0.9);
   border-radius: 24px;
-  padding: 16px 28px;
+  padding: 20px 30px;
   max-width: 580px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 24px auto;
   text-align: center;
-  box-shadow: var(--shadow-lg), 0 0 30px rgba(233, 184, 92, 0.4);
+  box-shadow: 0 16px 40px rgba(70, 51, 72, 0.14), 0 0 35px rgba(243, 213, 138, 0.4);
   animation: fadeIn 0.8s ease;
   position: relative;
   z-index: 20;
 }
 
 .completion-stars-sparkle {
-  color: var(--champagne-gold);
+  color: #F3D58A;
   font-size: 18px;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
+  margin-bottom: 2px;
 }
 
 .completion-heading {
-  font-family: var(--font-serif);
-  font-size: 24px;
+  font-family: var(--font-primary);
+  font-size: 18px;
   font-weight: 800;
-  color: #4A334D;
+  letter-spacing: 2.5px;
+  color: #E9878F;
   margin: 4px 0;
 }
 
 .completion-sub {
-  font-size: 14px;
-  color: var(--text-dark);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: #463348;
   margin-bottom: 2px;
 }
 
 .completion-teaser {
   font-family: var(--font-handwritten);
-  font-size: 19px;
-  color: var(--blush-pink-deep);
+  font-size: 22px;
+  color: #8C7094;
+  margin-bottom: 4px;
 }
 
-.completion-gift-text {
-  font-size: 20px;
+.completion-mystery-highlight {
+  font-family: var(--font-serif);
+  font-size: 18px;
   font-weight: 800;
-  color: #4A334D;
-  margin: 6px 0 12px 0;
+  color: #463348;
+  letter-spacing: 0.5px;
+  margin: 6px 0 14px 0;
+  text-shadow: 0 0 12px rgba(243, 213, 138, 0.4);
 }
 
-.gift-unlock-btn {
-  padding: 12px 28px;
-  font-size: 14px;
+.final-prompt-btn {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  font-size: 13px;
 }
 
 /* ==========================================================================
@@ -2097,16 +2106,6 @@ html, body {
     font-size: 19px;
   }
 }
-  padding: 10px 14px;
-  border-radius: 12px;
-  animation: shake 0.4s ease;
-}
-
-.error-msg {
-  background: #FFF0F0;
-  color: #DC2626;
-  border: 1px solid #FECDD3;
-}
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -2544,6 +2543,1004 @@ html, body {
   }
 }
 
+/* ==========================================================================
+   WAIT INTERSTITIAL TRANSITION OVERLAY
+   ========================================================================== */
+
+.wait-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 50%, rgba(70, 51, 72, 0.95) 0%, rgba(45, 32, 48, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wait-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wait-interstitial-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px 24px;
+  position: relative;
+}
+
+.wait-sparkle-stars {
+  font-size: 24px;
+  color: #F3D58A;
+  letter-spacing: 12px;
+  margin-bottom: 16px;
+  animation: starCollectPulse 2s infinite ease-in-out;
+  text-shadow: 0 0 16px rgba(243, 213, 138, 0.6);
+}
+
+.wait-main-title {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #F6C8D2;
+  margin-bottom: 24px;
+  text-shadow: 0 0 20px rgba(246, 200, 210, 0.4);
+}
+
+.wait-text-sequence {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wait-line {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: #FFF9F6;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.wait-line.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wait-line-pause {
+  font-family: var(--font-handwritten);
+  font-size: 32px;
+  color: #F3D58A;
+}
+
+.wait-line-climax {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: #F6C8D2;
+  letter-spacing: 0.5px;
+}
+
+.wait-portal-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(246, 200, 210, 0.25) 0%, rgba(243, 213, 138, 0.15) 50%, transparent 70%);
+  pointer-events: none;
+  animation: auraGentlyPulse 3s infinite alternate ease-in-out;
+  z-index: -1;
+}
+
+/* ==========================================================================
+   FINAL CHAPTER SCREEN — THE BIRTHDAY GIRL CLIMAX
+   ========================================================================== */
+
+.final-chapter-screen {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  padding: 40px 20px 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #FAF3F0;
+  transition: background 1.5s ease;
+}
+
+.final-chapter-screen.celebration-mode {
+  background: radial-gradient(circle at 50% 30%, #FFF5F7 0%, #FEF0F4 50%, #FAF0E6 100%);
+}
+
+.final-ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glow-hero-center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(246, 200, 210, 0.4) 0%, rgba(243, 213, 138, 0.25) 45%, transparent 75%);
+  filter: blur(40px);
+}
+
+.glow-hero-top {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(233, 135, 143, 0.2) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+.final-dream-mist {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.7), transparent);
+  pointer-events: none;
+}
+
+/* Header */
+.final-mystery-header {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+.final-page-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: #463348;
+  margin: 12px 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.final-tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: #7A5F80;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.final-subhint {
+  font-family: var(--font-handwritten);
+  font-size: 24px;
+  color: #E9878F;
+}
+
+/* Stage Layout */
+.final-stage-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   INTERACTIVE FLOATING STORY OBJECTS (ENVIRONMENTAL STORYTELLING)
+   ========================================================================== */
+
+.final-story-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.story-object {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.story-obj-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(246, 200, 210, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(70, 51, 72, 0.08), 0 2px 6px rgba(243, 213, 138, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.story-emoji {
+  font-size: 24px;
+}
+
+.story-object:hover .story-obj-inner,
+.story-object:focus .story-obj-inner {
+  transform: translateY(-4px) scale(1.1);
+  background: #FFFFFF;
+  border-color: #E9878F;
+  box-shadow: 0 12px 28px rgba(233, 135, 143, 0.25), 0 0 16px rgba(243, 213, 138, 0.4);
+}
+
+/* Story Tooltip */
+.story-tooltip {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #FFFDF9;
+  border: 1px solid rgba(243, 213, 138, 0.9);
+  border-radius: 14px;
+  padding: 8px 14px;
+  font-family: var(--font-handwritten);
+  font-size: 19px;
+  color: #463348;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(70, 51, 72, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 50;
+}
+
+.story-object:hover .story-tooltip,
+.story-object:focus .story-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Individual Object Positions */
+.story-polaroid-stack {
+  top: 18%;
+  left: 4%;
+  animation: floatSlow1 6s infinite alternate ease-in-out;
+}
+
+.story-star-cluster {
+  top: 8%;
+  left: 18%;
+  animation: floatSlow2 7s infinite alternate ease-in-out;
+}
+
+.star-nodes {
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  color: #F3D58A;
+}
+
+.constellation-22 {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 800;
+  color: #E9878F;
+  margin-left: 6px;
+  display: none;
+}
+
+.story-star-cluster.connected .constellation-22 {
+  display: inline-block;
+  animation: starCollectPulse 1s infinite alternate;
+}
+
+.story-handwritten-note {
+  bottom: 18%;
+  left: 6%;
+  animation: floatSlow3 8s infinite alternate ease-in-out;
+}
+
+.story-calendar-card {
+  top: 16%;
+  right: 4%;
+  animation: floatSlow2 6.5s infinite alternate ease-in-out;
+}
+
+.mini-cal-header {
+  font-family: var(--font-primary);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #E9878F;
+  margin-right: 4px;
+}
+
+.mini-cal-num {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #463348;
+}
+
+.story-ribbon-bow {
+  top: 6%;
+  right: 20%;
+  animation: floatSlow1 7.5s infinite alternate ease-in-out;
+}
+
+.story-ribbon-bow:hover .story-emoji {
+  animation: bowWiggle 0.5s ease infinite alternate;
+}
+
+@keyframes bowWiggle {
+  0% { transform: rotate(-8deg); }
+  100% { transform: rotate(8deg); }
+}
+
+.story-magnifying-glass {
+  bottom: 16%;
+  right: 6%;
+  animation: floatSlow3 7s infinite alternate ease-in-out;
+}
+
+@keyframes floatSlow1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes floatSlow2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(-3deg); }
+}
+
+@keyframes floatSlow3 {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-10px) rotate(1.5deg); }
+}
+
+/* ==========================================================================
+   THE CENTRAL HERO SILHOUETTE POD
+   ========================================================================== */
+
+.final-hero-pod {
+  position: relative;
+  z-index: 5;
+  width: 320px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pod-glow-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(246, 200, 210, 0.6) 0%, rgba(243, 213, 138, 0.35) 45%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.pod-pedestal-light {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 35px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(233, 135, 143, 0.4) 0%, rgba(243, 213, 138, 0.2) 60%, transparent 80%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.final-hero-pod:hover,
+.final-hero-pod:focus {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.final-hero-pod:hover .pod-glow-aura,
+.final-hero-pod:focus .pod-glow-aura {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(233, 135, 143, 0.7) 0%, rgba(243, 213, 138, 0.5) 50%, transparent 75%);
+  filter: blur(25px);
+}
+
+.final-silhouette-frame {
+  position: relative;
+  z-index: 5;
+  width: 260px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.final-silhouette-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(70, 51, 72, 0.35));
+  transition: all 0.4s ease;
+}
+
+.final-hero-pod:hover .final-silhouette-img {
+  filter: drop-shadow(0 16px 32px rgba(233, 135, 143, 0.5)) brightness(1.08);
+}
+
+.final-hover-callout {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFDF9;
+  border: 1.5px solid rgba(243, 213, 138, 0.95);
+  border-radius: 20px;
+  padding: 6px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  box-shadow: 0 8px 22px rgba(70, 51, 72, 0.12), 0 0 16px rgba(243, 213, 138, 0.35);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 20;
+}
+
+.callout-lead {
+  font-family: var(--font-handwritten);
+  font-size: 19px;
+  color: #463348;
+}
+
+.callout-action {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #E9878F;
+}
+
+/* Revealed Hero Photo Container */
+.final-revealed-hero {
+  position: relative;
+  z-index: 10;
+  animation: photoMaterialize 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.hero-photo-frame {
+  background: #FFFFFF;
+  border-radius: 26px;
+  padding: 14px 14px 18px 14px;
+  box-shadow: 0 20px 50px rgba(70, 51, 72, 0.18), 0 0 35px rgba(243, 213, 138, 0.45);
+  transform: rotate(-1deg);
+  max-width: 320px;
+}
+
+.final-birthday-girl-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 4px 12px rgba(70, 51, 72, 0.12));
+}
+
+.hero-halo-shimmer {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 35px;
+  background: radial-gradient(circle, rgba(243, 213, 138, 0.45) 0%, rgba(246, 200, 210, 0.3) 50%, transparent 75%);
+  filter: blur(16px);
+  pointer-events: none;
+  z-index: -1;
+  animation: auraGentlyPulse 2.5s infinite alternate ease-in-out;
+}
+
+/* ==========================================================================
+   EMOTIONAL PAYOFF CARD
+   ========================================================================== */
+
+.final-emotional-card {
+  position: relative;
+  z-index: 15;
+  text-align: center;
+  max-width: 540px;
+  margin-top: 18px;
+  animation: noteSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.emotional-badge {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #E9878F;
+  margin-bottom: 2px;
+}
+
+.emotional-name {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 4.5vw, 40px);
+  font-weight: 800;
+  color: #463348;
+  margin-bottom: 12px;
+  text-shadow: 0 0 20px rgba(243, 213, 138, 0.4);
+}
+
+.emotional-letter-card {
+  background: #FFFDF9;
+  border: 1.5px solid rgba(246, 200, 210, 0.9);
+  border-radius: 24px;
+  padding: 20px 28px;
+  box-shadow: 0 10px 30px rgba(70, 51, 72, 0.08), 0 0 20px rgba(243, 213, 138, 0.2);
+}
+
+.emotional-lead {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 700;
+  color: #E9878F;
+  margin-bottom: 8px;
+}
+
+.emotional-body {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  color: #463348;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.emotional-signoff {
+  font-family: var(--font-handwritten);
+  font-size: 26px;
+  color: #463348;
+}
+
+/* ==========================================================================
+   THE TWO-TIER BIRTHDAY CAKE WITH 22 CANDLES
+   ========================================================================== */
+
+.final-cake-container {
+  position: relative;
+  z-index: 15;
+  margin-top: 36px;
+  animation: cakeSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cakeSlideUp {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.cake-interaction-pod {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: transform 0.3s ease;
+}
+
+.cake-interaction-pod:hover {
+  transform: translateY(-4px);
+}
+
+.two-tier-cake-art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Tier 2 (Top) */
+.cake-tier-top {
+  position: relative;
+  width: 140px;
+  height: 70px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF5F7 60%, #FCE8EE 100%);
+  border-radius: 16px 16px 6px 6px;
+  box-shadow: 0 4px 14px rgba(70, 51, 72, 0.08);
+  border: 1.5px solid rgba(246, 200, 210, 0.8);
+  z-index: 2;
+}
+
+/* 22 Candles */
+.candles-22-wrapper {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 5;
+}
+
+.candle-digit {
+  position: relative;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 800;
+  color: #F3D58A;
+  text-shadow: 0 2px 6px rgba(70, 51, 72, 0.15), 0 0 10px rgba(243, 213, 138, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candle-flame {
+  width: 10px;
+  height: 16px;
+  background: radial-gradient(ellipse at 50% 80%, #FFF275 0%, #FF8C00 60%, transparent 100%);
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 12px #FFD700, 0 0 20px #FF8C00;
+  animation: flameFlicker 0.4s infinite alternate ease-in-out;
+  margin-bottom: 2px;
+  transition: all 0.4s ease;
+}
+
+@keyframes flameFlicker {
+  0% { transform: scale(1) rotate(-2deg); opacity: 0.95; }
+  100% { transform: scale(1.15) rotate(3deg); opacity: 1; }
+}
+
+.candle-digit.extinguished .candle-flame {
+  opacity: 0;
+  transform: scale(0.2) translateY(-10px);
+  filter: blur(4px);
+}
+
+/* Tier 1 (Bottom) */
+.cake-tier-bottom {
+  position: relative;
+  width: 200px;
+  height: 90px;
+  margin-top: -6px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF5F7 50%, #F8D7E0 100%);
+  border-radius: 20px 20px 8px 8px;
+  box-shadow: 0 8px 24px rgba(70, 51, 72, 0.12);
+  border: 1.5px solid rgba(246, 200, 210, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cake-frosting-drip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: #FFFFFF;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 4px rgba(246, 200, 210, 0.4);
+}
+
+.cake-ribbon-gold {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #F3D58A 0%, #FFE8A3 50%, #F3D58A 100%);
+}
+
+.cake-floral-accents {
+  font-size: 14px;
+  letter-spacing: 6px;
+}
+
+.cake-pedestal-stand {
+  width: 230px;
+  height: 16px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F4ECE7 100%);
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(70, 51, 72, 0.14);
+  margin-top: -4px;
+}
+
+.cake-hover-callout {
+  margin-top: 10px;
+  background: #FFFDF9;
+  border: 1px solid rgba(243, 213, 138, 0.8);
+  border-radius: 16px;
+  padding: 4px 16px;
+  font-family: var(--font-handwritten);
+  font-size: 20px;
+  color: #E9878F;
+  box-shadow: 0 4px 12px rgba(243, 213, 138, 0.25);
+  transition: all 0.3s ease;
+}
+
+.wish-made-badge {
+  margin-top: 10px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #E9878F;
+  animation: starCollectPulse 1.2s infinite alternate;
+}
+
+/* ==========================================================================
+   THE WRAPPED BIRTHDAY GIFT BOX & FINAL VIDEO LINK
+   ========================================================================== */
+
+.final-gift-container {
+  position: relative;
+  z-index: 15;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: noteSlideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.final-gift-pod {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.final-gift-pod:hover {
+  transform: translateY(-6px) scale(1.04);
+}
+
+.gift-box-visual {
+  position: relative;
+  width: 140px;
+  height: 120px;
+}
+
+.gift-box-lid {
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 156px;
+  height: 34px;
+  background: linear-gradient(135deg, #FFF9F6 0%, #F6C8D2 100%);
+  border: 1.5px solid rgba(233, 135, 143, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(70, 51, 72, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-ribbon-bow {
+  font-size: 28px;
+  margin-top: -18px;
+  filter: drop-shadow(0 2px 6px rgba(233, 135, 143, 0.4));
+  transition: transform 0.4s ease;
+}
+
+.final-gift-pod:hover .gift-ribbon-bow {
+  transform: rotate(-6deg) scale(1.15);
+}
+
+.gift-box-base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  height: 94px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF2F5 60%, #F9DBE3 100%);
+  border: 1.5px solid rgba(246, 200, 210, 0.9);
+  border-radius: 8px 8px 18px 18px;
+  box-shadow: 0 14px 35px rgba(70, 51, 72, 0.15), 0 0 25px rgba(243, 213, 138, 0.3);
+  z-index: 2;
+}
+
+.gift-ribbon-vertical {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 100%;
+  background: linear-gradient(180deg, #F3D58A 0%, #E9878F 100%);
+}
+
+.gift-ribbon-horizontal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(90deg, #F3D58A 0%, #E9878F 50%, #F3D58A 100%);
+}
+
+.gift-interior-beam {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF275 0%, #F3D58A 60%, transparent 100%);
+  filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 3;
+}
+
+/* Open Gift Box Animation */
+.final-gift-pod.is-open .gift-box-lid {
+  transform: translateY(-36px) rotate(-15deg);
+}
+
+.final-gift-pod.is-open .gift-interior-beam {
+  opacity: 1;
+  animation: auraGentlyPulse 1.5s infinite alternate ease-in-out;
+}
+
+.gift-hover-callout {
+  margin-top: 12px;
+  background: #FFFDF9;
+  border: 1px solid rgba(243, 213, 138, 0.8);
+  border-radius: 16px;
+  padding: 4px 16px;
+  font-family: var(--font-handwritten);
+  font-size: 20px;
+  color: #463348;
+  box-shadow: 0 4px 12px rgba(243, 213, 138, 0.2);
+}
+
+/* The Final Letter Card with Drive Link */
+.final-gift-letter-card {
+  background: #FFFDF9;
+  border: 1.5px solid rgba(246, 200, 210, 0.95);
+  border-radius: 24px;
+  padding: 24px 32px;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(70, 51, 72, 0.14), 0 0 25px rgba(243, 213, 138, 0.35);
+  margin-top: 18px;
+  animation: noteSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.letter-tag {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: #E9878F;
+  margin-bottom: 6px;
+}
+
+.letter-quote {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #463348;
+  margin-bottom: 4px;
+}
+
+.letter-question {
+  font-family: var(--font-handwritten);
+  font-size: 24px;
+  color: #E9878F;
+  margin-bottom: 18px;
+}
+
+.final-gift-action-btn {
+  font-size: 14px;
+  padding: 16px 32px;
+}
+
+/* Final Riddle Modal Overrides */
+.final-riddle-card {
+  max-width: 480px;
+}
+
+/* Mobile & Tablet Adjustments for Final Mystery */
+@media (max-width: 768px) {
+  .final-stage-container {
+    min-height: 460px;
+  }
+
+  .story-polaroid-stack {
+    top: 5%;
+    left: 2%;
+  }
+
+  .story-calendar-card {
+    top: 5%;
+    right: 2%;
+  }
+
+  .story-star-cluster {
+    display: none;
+  }
+
+  .story-ribbon-bow {
+    display: none;
+  }
+
+  .story-handwritten-note {
+    bottom: 2%;
+    left: 2%;
+  }
+
+  .story-magnifying-glass {
+    bottom: 2%;
+    right: 2%;
+  }
+
+  .final-hero-pod {
+    width: 260px;
+    min-height: 320px;
+  }
+
+  .final-silhouette-frame {
+    width: 220px;
+    height: 270px;
+  }
+
+  .hero-photo-frame {
+    max-width: 260px;
+  }
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -2551,5 +3548,300 @@ html, body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Narrow mobile layout: keep every interactive screen usable on phones. */
+@media (max-width: 600px) {
+  .screen {
+    min-height: 100svh;
+  }
+
+  #landing-screen {
+    min-height: 100svh;
+    padding: 52px 10px 24px;
+    overflow-y: auto;
+  }
+
+  .room-scene-wrapper {
+    width: 100%;
+  }
+
+  .invitation-card-container,
+  .mystery-header,
+  .mystery-cards-gallery-wrapper,
+  .completion-banner {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .invitation-card {
+    width: 100%;
+    padding: 26px 14px;
+    border-radius: 22px;
+  }
+
+  .invitation-title {
+    font-size: clamp(25px, 8vw, 34px);
+    letter-spacing: 1px;
+  }
+
+  .invitation-subtitle {
+    font-size: clamp(20px, 6vw, 26px);
+  }
+
+  .invitation-intro span {
+    line-height: 1.45;
+  }
+
+  .input-label,
+  .invitation-btn {
+    font-size: 13px;
+  }
+
+  .bottom-table-surface {
+    width: 100%;
+    padding: 0;
+  }
+
+  .table-quote-note,
+  .table-quote-note p {
+    max-width: 100%;
+  }
+
+  #game-screen {
+    padding: 20px 10px 36px;
+  }
+
+  .mystery-page-title {
+    font-size: clamp(21px, 7vw, 28px);
+    overflow-wrap: anywhere;
+  }
+
+  .mystery-tagline,
+  .instruction-lead {
+    font-size: 16px;
+  }
+
+  .friend-collection-box {
+    max-width: 100%;
+    padding: 8px 14px;
+  }
+
+  .collection-stars-bar {
+    gap: 5px;
+    font-size: 18px;
+  }
+
+  .completion-banner {
+    padding: 14px 16px;
+  }
+
+  .completion-heading {
+    font-size: 21px;
+  }
+
+  .cards-grid {
+    width: 100%;
+    max-width: 360px;
+    gap: 14px 8px;
+  }
+
+  .mystery-memory-card {
+    width: min(100%, 164px);
+    height: 230px;
+    padding: 10px 7px 9px;
+  }
+
+  .card-portrait-frame {
+    height: 150px;
+  }
+
+  .card-label-badge {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-hover-hint {
+    display: none;
+  }
+
+  .modal-overlay {
+    align-items: flex-start;
+    padding: max(12px, env(safe-area-inset-top)) 10px max(12px, env(safe-area-inset-bottom));
+  }
+
+  .expanded-card-wrapper,
+  .magical-memory-popup,
+  .glass-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .magical-memory-popup,
+  .glass-card {
+    max-height: calc(100svh - 24px);
+    overflow-y: auto;
+  }
+
+  .magical-memory-popup {
+    padding: 24px 14px 18px;
+    border-radius: 24px;
+  }
+
+  .mystery-polaroid-frame {
+    width: min(170px, 68vw);
+  }
+
+  .magical-memory-popup.is-solved .mystery-polaroid-frame {
+    width: min(240px, 82vw);
+  }
+
+  .question-text,
+  .emotional-body {
+    overflow-wrap: anywhere;
+  }
+
+  .magical-memory-input {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .friend-note-text,
+  .hint-text {
+    overflow-wrap: anywhere;
+  }
+
+  .reveal-title,
+  .gift-title {
+    font-size: 22px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .revealed-polaroid-frame {
+    width: min(220px, 76vw);
+    height: min(250px, 86vw);
+  }
+
+  .friend-personal-message {
+    font-size: 20px;
+    overflow-wrap: anywhere;
+  }
+
+  .full-overlay {
+    padding: 18px 12px;
+  }
+
+  .complete-title {
+    font-size: clamp(25px, 8vw, 32px);
+    line-height: 1.15;
+  }
+
+  .complete-text-sequence p {
+    font-size: 15px;
+  }
+
+  .ready-banner h3 {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .gift-modal-card {
+    padding: 28px 14px 20px;
+  }
+
+  .gift-body {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .final-chapter-screen {
+    min-height: 100svh;
+    padding: 28px 12px 56px;
+  }
+
+  .final-mystery-header {
+    width: 100%;
+  }
+
+  .final-page-title {
+    font-size: clamp(26px, 8vw, 42px);
+    overflow-wrap: anywhere;
+  }
+
+  .final-subhint {
+    font-size: 21px;
+  }
+
+  .final-stage-container {
+    min-height: 410px;
+    margin-bottom: 26px;
+  }
+
+  .final-story-world {
+    transform: scale(0.78);
+    transform-origin: center top;
+  }
+
+  .final-hero-pod {
+    width: min(270px, 82vw);
+    min-height: 310px;
+  }
+
+  .pod-glow-aura {
+    width: 290px;
+    height: 290px;
+  }
+
+  .final-silhouette-frame {
+    width: min(220px, 70vw);
+    height: 270px;
+  }
+
+  .final-hover-callout {
+    max-width: 82vw;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .emotional-letter-card,
+  .final-gift-letter-card {
+    width: 100%;
+    padding: 18px 16px;
+  }
+
+  .emotional-lead,
+  .letter-quote {
+    font-size: 18px;
+  }
+
+  .final-cake-container,
+  .final-gift-container {
+    margin-top: 24px;
+  }
+
+  .wait-interstitial-content {
+    width: 100%;
+    padding: 28px 14px;
+  }
+
+  .wait-main-title {
+    font-size: clamp(21px, 7vw, 28px);
+    letter-spacing: 3px;
+  }
+
+  .wait-line {
+    font-size: 19px;
+  }
+
+  .wait-line-pause {
+    font-size: 27px;
+  }
+
+  .wait-portal-glow {
+    width: 280px;
+    height: 280px;
   }
 }

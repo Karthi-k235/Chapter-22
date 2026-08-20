@@ -48,13 +48,13 @@ const giftContent = {
 const friends = [
   {
     id: 1,
-    name: "Ananya",
+    name: "Mallesh",
     silhouette: "assets/shill/final.png",
-    revealedImage: "assets/shill/final.png",
-    question: "Who is always 20 minutes late to every single hangout but shows up with an iced coffee in hand?",
-    answers: ["ananya", "brunch", "breakfast", "coffee", "every meeting", "everything", "hangout", "lunch"],
-    hint: "Think about the friend who always shows up with an iced latte apologizing...",
-    message: "Haripriya! Happy 22nd! I might be late to our hangouts, but I'll always be early to celebrate you! ☕❤️"
+    revealedImage: "assets/friends/friend1.png",
+    question: "If we've already come this far together, how much more of this crazy journey is still waiting for us in the future? But do you still remember the first time?",
+    answers: ["8th class", "eighth class", "8thclass"],
+    hint: "You better remember (Class).",
+    message: "From the 8th class to every chapter since then, this journey has only become more special. Happy Birthday, Haripriya! 💕"
   },
   {
     id: 2,
@@ -88,7 +88,7 @@ const friends = [
   },
   {
     id: 5,
-    name: "Riya",
+    name: "Swarna",
     silhouette: "assets/shill/final.png",
     revealedImage: "assets/friends/friend5.png",
     question: "Bunked an exam, my strict curfew, no buses in sight, and pure panic at the bus stand. Yet despite all the drama, the mission was completed by sharing a sweet treat. Which store was it from?",
@@ -98,7 +98,7 @@ const friends = [
   },
   {
     id: 6,
-    name: "Kavya",
+    name: "Raj",
     silhouette: "assets/shill/final.png",
     revealedImage: "assets/friends/friend6.png",
     question: "Remember when I spun a wildly steamy dating story that was so well-scripted you all actually believed it? Name the city where my legendary fake romance took place!",
@@ -108,23 +108,23 @@ const friends = [
   },
   {
     id: 7,
-    name: "Nitya",
+    name: "Teja",
     silhouette: "assets/shill/final.png",
-    revealedImage: "assets/shill/final.png",
-    question: "Who has over 1,000 funny candid photos of Haripriya saved in a secret vault folder?",
-    answers: ["nitya", "1000", "thousands", "too many", "million", "endless", "500"],
-    hint: "Enough funny camera roll memories to blackmail you for the next 50 years...",
-    message: "Happy Birthday my sweetest Haripriya! Your Chapter 22 photo album starts today! 📸🌸"
+    revealedImage: "assets/friends/friend7.png",
+    question: "Yet another friendship that has lasted this long, had its bumps, yet is still close to the heart. What is the activity place we have been members of?",
+    answers: ["Arts & Crafts", "Arts and Crafts", "Arts & Crafts Club", "Arts and Crafts Club", "Arts Crafts", "Arts Crafts Club"],
+    hint: "Colors and scissors all around, the things we made together...",
+    message: "Through every bump, the memories we made together have stayed close to the heart. Happy Birthday, Haripriya! 🎨💕"
   },
   {
     id: 8,
-    name: "Shreya",
+    name: "Nithin",
     silhouette: "assets/shill/final.png",
-    revealedImage: "assets/shill/final.png",
-    question: "Who screams 'SLAYYY QUEEN!' the second Haripriya walks into the room looking gorgeous?",
-    answers: ["shreya", "slay", "ate", "mother", "gorgeous", "queen", "stunning", "slayyy"],
-    hint: "Your biggest hype woman on the planet who always yells your praises...",
-    message: "SLAYYY HARIPRIYA! Happy 22nd Birthday! You are the brightest star in our universe! 🌟💖"
+    revealedImage: "assets/friends/friend8.png",
+    question: "We might not have many pictures together, but I will make sure to keep everyone's face smiling every time I speak. So what's my name?",
+    answers: ["Nithin"],
+    hint: "Most trollest, yet most loved in the group.",
+    message: "Not many pictures, but plenty of laughs. Happy Birthday, Haripriya! Keep smiling! 😄💕"
   }
 ];
 
@@ -358,6 +358,9 @@ function loadProgress() {
       const parsed = JSON.parse(saved);
       if (parsed.playerName) gameState.playerName = parsed.playerName;
       if (Array.isArray(parsed.revealedIds)) gameState.revealedIds = parsed.revealedIds;
+      if (typeof parsed.finalPersonRevealed === 'boolean') gameState.finalPersonRevealed = parsed.finalPersonRevealed;
+      if (typeof parsed.cakeBlown === 'boolean') gameState.cakeBlown = parsed.cakeBlown;
+      if (typeof parsed.giftOpened === 'boolean') gameState.giftOpened = parsed.giftOpened;
       
       const nameInput = document.getElementById('player-name-input');
       if (nameInput) nameInput.value = gameState.playerName;
@@ -378,7 +381,10 @@ function loadProgress() {
 function saveProgress() {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
     playerName: gameState.playerName,
-    revealedIds: gameState.revealedIds
+    revealedIds: gameState.revealedIds,
+    finalPersonRevealed: gameState.finalPersonRevealed,
+    cakeBlown: gameState.cakeBlown,
+    giftOpened: gameState.giftOpened
   }));
 }
 
@@ -543,11 +549,31 @@ function updateProgressBar() {
     starsContainer.innerHTML = starsHtml;
   }
 
-  // Completion State Banner (When all 8 friends are found)
+  // Final Mystery Banner (When all 8 friends are found)
   const completionBanner = document.getElementById('all-friends-completed-banner');
   if (completionBanner) {
     if (foundCount === totalCount && totalCount > 0) {
       completionBanner.classList.remove('hidden');
+
+      const heading = document.getElementById('completion-banner-heading');
+      const sub = document.getElementById('completion-banner-sub');
+      const teaser = document.getElementById('completion-banner-teaser');
+      const highlight = document.getElementById('completion-banner-highlight');
+      const btnText = document.getElementById('completion-banner-btn-text');
+
+      if (gameState.finalPersonRevealed) {
+        if (heading) heading.textContent = "✦ THE FINAL CHAPTER ✦";
+        if (sub) sub.textContent = "You solved the mystery of Chapter 22!";
+        if (teaser) teaser.textContent = "The celebration is waiting for you.";
+        if (highlight) highlight.textContent = "ENTER THE BIRTHDAY ROOM ♡";
+        if (btnText) btnText.textContent = "✦ ENTER THE BIRTHDAY ROOM ✦";
+      } else {
+        if (heading) heading.textContent = "✦ ONE PERSON REMAINS ✦";
+        if (sub) sub.textContent = "You found all 8 friends hiding in Chapter 22...";
+        if (teaser) teaser.textContent = "...but the mystery isn't finished yet.";
+        if (highlight) highlight.textContent = "THERE IS STILL ONE PERSON MISSING. 👀";
+        if (btnText) btnText.textContent = "✦ WHO IS STILL MISSING? ✦";
+      }
     } else {
       completionBanner.classList.add('hidden');
     }
@@ -804,6 +830,338 @@ function showFriendRevealModal(friend, isNewDiscovery = true) {
 
   const modal = document.getElementById('reveal-modal');
   modal.classList.remove('hidden');
+}
+
+// ==========================================
+// FINAL UNLOCK & GIFT SYSTEM (THE FINAL CHAPTER)
+// ==========================================
+
+const FINAL_GIFT_URL = "https://drive.google.com/"; // Paste your Google Drive video link here!
+const BIRTHDAY_GIRL_IMAGE = "assets/Pics/pic1.png"; // Dynamic birthday girl hero image
+
+// Trigger the Transition from 8 Friends Solved to The Final Mystery
+function triggerFinalMysteryTransition() {
+  closePuzzleModal();
+  
+  // Sequential Star Pulse in Header
+  for (let i = 0; i < friends.length; i++) {
+    setTimeout(() => {
+      const star = document.getElementById(`collection-star-${i}`);
+      if (star) {
+        star.style.transform = 'scale(1.8)';
+        star.style.color = '#F3D58A';
+        setTimeout(() => {
+          star.style.transform = '';
+        }, 400);
+      }
+      playAmbientSound('chime');
+    }, i * 180);
+  }
+
+  // Open Wait Interstitial Screen after Star Pulse
+  setTimeout(() => {
+    const waitScreen = document.getElementById('wait-interstitial-screen');
+    if (!waitScreen) return;
+
+    waitScreen.classList.remove('hidden');
+    playAmbientSound('chime');
+
+    const l1 = document.getElementById('wait-line-1');
+    const l2 = document.getElementById('wait-line-2');
+    const l3 = document.getElementById('wait-line-3');
+
+    if (l1) l1.classList.remove('active');
+    if (l2) l2.classList.remove('active');
+    if (l3) l3.classList.remove('active');
+
+    // Staggered text reveal
+    setTimeout(() => { if (l1) l1.classList.add('active'); }, 500);
+    setTimeout(() => { if (l2) l2.classList.add('active'); playAmbientSound('chime'); }, 1800);
+    setTimeout(() => { if (l3) l3.classList.add('active'); playAmbientSound('celebrate'); }, 3200);
+
+    // Transition into Final Mystery Screen
+    setTimeout(() => {
+      waitScreen.classList.add('hidden');
+      
+      const gameScreen = document.getElementById('game-screen');
+      if (gameScreen) gameScreen.classList.add('hidden');
+
+      const finalScreen = document.getElementById('final-mystery-screen');
+      if (finalScreen) {
+        finalScreen.classList.remove('hidden');
+        initFinalMysteryScreen();
+      }
+    }, 5200);
+
+  }, friends.length * 180 + 400);
+}
+
+// Initialize Final Mystery Screen & Ambient Particles
+function initFinalMysteryScreen() {
+  // Populate Player Names
+  const name = gameState.playerName || "Haripriya";
+  const nameEl = document.getElementById('final-birthday-girl-name');
+  if (nameEl) nameEl.textContent = name;
+
+  const signEl = document.getElementById('final-girl-name-sign');
+  if (signEl) signEl.textContent = name;
+
+  const girlImg = document.getElementById('final-birthday-girl-img');
+  if (girlImg) girlImg.src = BIRTHDAY_GIRL_IMAGE;
+
+  // Final Screen Ambient Bubbles
+  const bubblesContainer = document.getElementById('final-bubbles-container');
+  if (bubblesContainer) {
+    bubblesContainer.innerHTML = '';
+    for (let i = 0; i < 18; i++) {
+      const bubble = document.createElement('div');
+      bubble.className = 'dream-bubble';
+      const size = Math.random() * 34 + 18;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 95}%`;
+      bubble.style.top = `${Math.random() * 85 + 10}%`;
+      bubble.style.animationDelay = `${Math.random() * 7}s`;
+      bubble.style.animationDuration = `${Math.random() * 8 + 10}s`;
+      bubblesContainer.appendChild(bubble);
+    }
+  }
+
+  // Check saved state for completed stages
+  if (gameState.finalPersonRevealed) {
+    const finalScreen = document.getElementById('final-mystery-screen');
+    if (finalScreen) finalScreen.classList.add('celebration-mode');
+
+    const silFrame = document.getElementById('final-silhouette-frame');
+    if (silFrame) silFrame.style.display = 'none';
+
+    const revealedHero = document.getElementById('final-revealed-hero');
+    if (revealedHero) revealedHero.classList.remove('hidden');
+
+    const emotionalCard = document.getElementById('final-emotional-card');
+    if (emotionalCard) emotionalCard.classList.remove('hidden');
+
+    const cakeContainer = document.getElementById('final-cake-container');
+    if (cakeContainer) cakeContainer.classList.remove('hidden');
+
+    if (gameState.cakeBlown) {
+      document.querySelectorAll('.candle-digit').forEach(c => c.classList.add('extinguished'));
+      const cakeCallout = document.getElementById('cake-hover-callout');
+      if (cakeCallout) cakeCallout.style.display = 'none';
+      const wishBadge = document.getElementById('wish-made-badge');
+      if (wishBadge) wishBadge.classList.remove('hidden');
+
+      const giftContainer = document.getElementById('final-gift-container');
+      if (giftContainer) giftContainer.classList.remove('hidden');
+
+      if (gameState.giftOpened) {
+        const giftPod = document.getElementById('final-gift-pod');
+        if (giftPod) giftPod.classList.add('is-open');
+        const giftCallout = document.getElementById('gift-hover-callout');
+        if (giftCallout) giftCallout.style.display = 'none';
+        const giftLetter = document.getElementById('final-gift-letter-card');
+        if (giftLetter) giftLetter.classList.remove('hidden');
+      }
+    }
+  }
+}
+
+// Final Riddle Modal (Who is missing?)
+function openFinalRiddleModal() {
+  if (gameState.finalPersonRevealed) return;
+
+  const modal = document.getElementById('final-riddle-modal');
+  if (!modal) return;
+
+  const input = document.getElementById('final-answer-input');
+  if (input) {
+    input.value = '';
+    input.disabled = false;
+  }
+
+  const feedback = document.getElementById('final-error-feedback');
+  if (feedback) feedback.classList.add('hidden');
+
+  modal.classList.remove('hidden');
+  playAmbientSound('chime');
+
+  setTimeout(() => {
+    if (input) input.focus();
+  }, 200);
+}
+
+function closeFinalRiddleModal() {
+  const modal = document.getElementById('final-riddle-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+// Check Final Answer (Must be Her Own Name)
+function checkFinalAnswer() {
+  const input = document.getElementById('final-answer-input');
+  if (!input) return;
+
+  const inputVal = input.value.trim();
+  if (!inputVal) return;
+
+  const cleanInput = inputVal.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const cleanTarget = (gameState.playerName || "Haripriya").toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  const validSelfAliases = [
+    cleanTarget,
+    "me",
+    "myself",
+    "i",
+    "haripriya",
+    "birthdaygirl",
+    "thebirthdaygirl",
+    "itwasme"
+  ];
+
+  const isCorrect = validSelfAliases.some(alias => cleanInput === alias || cleanInput.includes(alias));
+
+  if (isCorrect) {
+    // Correct Answer - It was her all along!
+    input.disabled = true;
+    playAmbientSound('celebrate');
+    closeFinalRiddleModal();
+
+    gameState.finalPersonRevealed = true;
+    saveProgress();
+
+    // Sequence of Climax Reveal
+    const silFrame = document.getElementById('final-silhouette-frame');
+    const revealedHero = document.getElementById('final-revealed-hero');
+    const emotionalCard = document.getElementById('final-emotional-card');
+    const cakeContainer = document.getElementById('final-cake-container');
+    const finalScreen = document.getElementById('final-mystery-screen');
+
+    // 1. Silhouette Dissolves (400ms)
+    setTimeout(() => {
+      if (silFrame) {
+        silFrame.style.opacity = '0';
+        setTimeout(() => { silFrame.style.display = 'none'; }, 400);
+      }
+    }, 400);
+
+    // 2. Birthday Girl Photo Materializes (900ms)
+    setTimeout(() => {
+      if (revealedHero) revealedHero.classList.remove('hidden');
+      playAmbientSound('celebrate');
+    }, 900);
+
+    // 3. Emotional Payoff Letter Slides In (1400ms)
+    setTimeout(() => {
+      if (emotionalCard) emotionalCard.classList.remove('hidden');
+    }, 1400);
+
+    // 4. Background Warm Birthday Bloom & Cake Appearance (2200ms)
+    setTimeout(() => {
+      if (finalScreen) finalScreen.classList.add('celebration-mode');
+      if (cakeContainer) cakeContainer.classList.remove('hidden');
+      playAmbientSound('chime');
+    }, 2200);
+
+  } else {
+    // Friendly Microcopy
+    playAmbientSound('wrong');
+    const card = document.getElementById('final-expanded-card');
+    if (card) {
+      card.classList.remove('shake-card');
+      void card.offsetWidth;
+      card.classList.add('shake-card');
+    }
+
+    const feedback = document.getElementById('final-error-feedback');
+    const friendlyHints = [
+      "But you already found them... ✦",
+      "You've been searching for everyone else. Maybe turn the mystery around. 👀",
+      "Think about who hasn't been looking for anyone... ♡",
+      "Who is the person this entire chapter was written for? ✨"
+    ];
+    feedback.textContent = friendlyHints[Math.floor(Math.random() * friendlyHints.length)];
+    feedback.classList.remove('hidden');
+  }
+}
+
+// Interactive Birthday Cake (Blow out 22 Candles)
+function blowFinalCakeCandles() {
+  if (gameState.cakeBlown) return;
+
+  gameState.cakeBlown = true;
+  saveProgress();
+
+  playAmbientSound('chime');
+
+  // Extinguish candle flames
+  document.querySelectorAll('.candle-digit').forEach(c => c.classList.add('extinguished'));
+
+  const cakeCallout = document.getElementById('cake-hover-callout');
+  if (cakeCallout) cakeCallout.style.display = 'none';
+
+  const wishBadge = document.getElementById('wish-made-badge');
+  if (wishBadge) wishBadge.classList.remove('hidden');
+
+  // Delay before gift box slides in
+  setTimeout(() => {
+    const giftContainer = document.getElementById('final-gift-container');
+    if (giftContainer) {
+      giftContainer.classList.remove('hidden');
+      playAmbientSound('celebrate');
+    }
+  }, 1200);
+}
+
+// Open Wrapped Birthday Gift Box
+function openFinalGiftBox() {
+  if (gameState.giftOpened) return;
+
+  gameState.giftOpened = true;
+  saveProgress();
+
+  playAmbientSound('celebrate');
+
+  const giftPod = document.getElementById('final-gift-pod');
+  if (giftPod) giftPod.classList.add('is-open');
+
+  const giftCallout = document.getElementById('gift-hover-callout');
+  if (giftCallout) giftCallout.style.display = 'none';
+
+  // Reveal Final Letter Card with Drive Video Button
+  setTimeout(() => {
+    const letterCard = document.getElementById('final-gift-letter-card');
+    if (letterCard) {
+      letterCard.classList.remove('hidden');
+      playAmbientSound('chime');
+    }
+  }, 700);
+}
+
+// Trigger Google Drive Video
+function triggerFinalDriveVideo() {
+  playAmbientSound('celebrate');
+  window.open(FINAL_GIFT_URL, "_blank");
+}
+
+// Star Cluster Constellation '22' Interaction
+function animateStarCluster22() {
+  const cluster = document.getElementById('story-star-cluster');
+  if (!cluster) return;
+
+  cluster.classList.toggle('connected');
+  playAmbientSound('chime');
+
+  setTimeout(() => {
+    cluster.classList.remove('connected');
+  }, 2500);
+}
+
+// Hook into 8th Friend Solved to initiate Final Mystery
+function checkChapterCompletion() {
+  if (gameState.revealedIds.length === friends.length && friends.length > 0) {
+    setTimeout(() => {
+      triggerFinalMysteryTransition();
+    }, 1200);
+  }
 }
 
 function closeRevealModal() {

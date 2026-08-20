@@ -220,15 +220,16 @@
         </div>
       </header>
 
-      <!-- Completion Banner (Appears when all 8 friends are found) -->
-      <div id="all-friends-completed-banner" class="completion-banner hidden">
+      <!-- Final Mystery Unlock Banner (When all 8 friends are found) -->
+      <div id="all-friends-completed-banner" class="completion-banner final-mystery-prompt-banner hidden">
         <div class="completion-stars-sparkle">✦ ✦ ✦</div>
-        <h3 class="completion-heading">✦ EVERYONE'S HERE ✦</h3>
-        <p class="completion-sub">You found every person hiding inside Chapter 22.</p>
-        <p class="completion-teaser">And now... there's only one thing left.</p>
-        <div class="completion-gift-text">YOUR GIFT. 🎁</div>
-        <button id="open-gift-unlock-btn" class="primary-btn gift-unlock-btn" onclick="openGift()">
-          OPEN YOUR GIFT ✦
+        <h3 id="completion-banner-heading" class="completion-heading">✦ ONE PERSON REMAINS ✦</h3>
+        <p id="completion-banner-sub" class="completion-sub">You found all 8 friends hiding in Chapter 22...</p>
+        <p id="completion-banner-teaser" class="completion-teaser">...but the mystery isn't finished yet.</p>
+        <div id="completion-banner-highlight" class="completion-mystery-highlight">THERE IS STILL ONE PERSON MISSING. 👀</div>
+        <button id="start-final-mystery-btn" class="magical-reveal-btn final-prompt-btn" onclick="triggerFinalMysteryTransition()">
+          <span class="btn-shine-sweep"></span>
+          <span id="completion-banner-btn-text" class="btn-text">✦ WHO IS STILL MISSING? ✦</span>
         </button>
       </div>
 
@@ -245,7 +246,284 @@
       </footer>
     </section>
 
+    <!-- ==================================================== -->
+    <!-- 2.5 WAIT INTERSTITIAL TRANSITION OVERLAY            -->
+    <!-- ==================================================== -->
+    <div id="wait-interstitial-screen" class="full-overlay wait-overlay hidden" aria-hidden="true">
+      <div class="wait-interstitial-content">
+        <div class="wait-sparkle-stars">✦ ✦ ✦</div>
+        <h2 id="wait-title" class="wait-main-title">✦ WAIT... ✦</h2>
+        <div class="wait-text-sequence">
+          <p id="wait-line-1" class="wait-line fade-step">You found everyone hiding in Chapter 22...</p>
+          <p id="wait-line-2" class="wait-line wait-line-pause fade-step">...or did you?</p>
+          <p id="wait-line-3" class="wait-line wait-line-climax fade-step">There is still one person missing.</p>
+        </div>
+        <div class="wait-portal-glow"></div>
+      </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 3. FINAL CHAPTER SCREEN — THE BIRTHDAY GIRL         -->
+    <!-- ==================================================== -->
+    <section id="final-mystery-screen" class="screen final-chapter-screen hidden">
+      <!-- Ambient Dream Background Layers -->
+      <div class="final-ambient-bg">
+        <div class="final-radial-glow glow-hero-center"></div>
+        <div class="final-radial-glow glow-hero-top"></div>
+        <div class="final-dream-mist"></div>
+        <div id="final-bubbles-container" class="dream-bubbles-wrapper"></div>
+        <div id="final-sparkles-container" class="dream-sparkles-wrapper"></div>
+      </div>
+
+      <!-- Compact Header -->
+      <header class="final-mystery-header">
+        <div class="chapter-branding">CHAPTER 22 ✦ THE FINAL MYSTERY</div>
+        <h2 id="final-screen-title" class="final-page-title">One person is still hiding.</h2>
+        <p id="final-screen-tagline" class="final-tagline">“You know everyone else... so who could possibly be missing?”</p>
+        <p id="final-screen-subhint" class="final-subhint">Take a closer look. 👀</p>
+      </header>
+
+      <!-- Central Stage with Hero Silhouette & Interactive Floating Story Objects -->
+      <main class="final-stage-container">
+        
+        <!-- Environmental Floating Interactive Objects (Storytelling) -->
+        <div class="final-story-world">
+          
+          <!-- Left: Floating Polaroid Stack -->
+          <div class="story-object story-polaroid-stack" tabindex="0" role="button" aria-label="Memories Polaroid">
+            <div class="story-obj-inner">
+              <span class="story-emoji">📸</span>
+              <div class="story-tooltip">“Some memories were made with friends... ♡”</div>
+            </div>
+          </div>
+
+          <!-- Upper Left: Star Cluster (Connects into '22' on click) -->
+          <div class="story-object story-star-cluster" id="story-star-cluster" tabindex="0" role="button" aria-label="Star Cluster 22" onclick="animateStarCluster22()">
+            <div class="story-obj-inner">
+              <div class="star-nodes">
+                <span class="star-node n1">✦</span>
+                <span class="star-node n2">✧</span>
+                <span class="star-node n3">⋆</span>
+                <span class="star-node n4">✦</span>
+              </div>
+              <div class="constellation-22" id="constellation-22">22</div>
+              <div class="story-tooltip">“Click the stars to connect them ✨”</div>
+            </div>
+          </div>
+
+          <!-- Bottom Left: Handwritten Note -->
+          <div class="story-object story-handwritten-note" tabindex="0" role="button" aria-label="Clue Note">
+            <div class="story-obj-inner">
+              <span class="story-emoji">📝</span>
+              <div class="story-tooltip">“You've been looking outward this whole time...”</div>
+            </div>
+          </div>
+
+          <!-- Right: Floating Calendar (22) -->
+          <div class="story-object story-calendar-card" tabindex="0" role="button" aria-label="Chapter 22 Calendar">
+            <div class="story-obj-inner">
+              <div class="mini-cal-header">CHAPTER</div>
+              <div class="mini-cal-num">22</div>
+              <div class="story-tooltip">“Hmm... this number keeps appearing. 🗓️”</div>
+            </div>
+          </div>
+
+          <!-- Upper Right: Floating Ribbon Bow -->
+          <div class="story-object story-ribbon-bow" tabindex="0" role="button" aria-label="Birthday Ribbon">
+            <div class="story-obj-inner">
+              <span class="story-emoji">🎀</span>
+              <div class="story-tooltip">“Something special is wrapped up somewhere... ✨”</div>
+            </div>
+          </div>
+
+          <!-- Bottom Right: Magnifying Glass -->
+          <div class="story-object story-magnifying-glass" tabindex="0" role="button" aria-label="Detective Glass">
+            <div class="story-obj-inner">
+              <span class="story-emoji">🔍</span>
+              <div class="story-tooltip">“Maybe the answer isn't hiding far away. ♡”</div>
+            </div>
+          </div>
+
+        </div><!-- /.final-story-world -->
+
+        <!-- THE CENTRAL HERO SILHOUETTE POD -->
+        <div id="final-hero-pod" class="final-hero-pod" onclick="openFinalRiddleModal()" tabindex="0" role="button" aria-label="The Final Mystery Person">
+          <div class="pod-glow-aura"></div>
+          <div class="pod-pedestal-light"></div>
+
+          <!-- The Mysterious Silhouette Container -->
+          <div id="final-silhouette-frame" class="final-silhouette-frame">
+            <img id="final-silhouette-img" src="assets/shill/final.png" alt="The Final Mystery Silhouette" class="final-silhouette-img">
+            
+            <!-- Floating Hover Callout -->
+            <div class="final-hover-callout">
+              <span class="callout-lead">You know this person... don't you?</span>
+              <span class="callout-action">✦ CLICK TO REVEAL ✦</span>
+            </div>
+          </div>
+
+          <!-- Revealed Birthday Girl Hero Photo (Materializes after correct answer) -->
+          <div id="final-revealed-hero" class="final-revealed-hero hidden">
+            <div class="hero-photo-frame">
+              <img id="final-birthday-girl-img" src="assets/Pics/pic1.png" alt="Happy Birthday Haripriya" class="final-birthday-girl-img">
+            </div>
+            <div class="hero-halo-shimmer"></div>
+          </div>
+        </div>
+
+        <!-- EMOTIONAL PAYOFF CARD (Appears after correct answer) -->
+        <div id="final-emotional-card" class="final-emotional-card hidden">
+          <div class="emotional-badge">✦ YOU FOUND HER ✦</div>
+          <h3 id="final-birthday-girl-name" class="emotional-name">Haripriya</h3>
+          <div class="emotional-letter-card">
+            <p class="emotional-lead">“It was you all along.”</p>
+            <p class="emotional-body">
+              You found your friends. But there was always one person missing — the person at the heart of every memory, the person who makes Chapter 22 yours.
+            </p>
+            <div class="emotional-signoff">Happy 22nd Birthday, <span id="final-girl-name-sign">Haripriya</span>. ♡</div>
+          </div>
+        </div>
+
+        <!-- THE TWO-TIER BIRTHDAY CAKE WITH 22 CANDLES -->
+        <div id="final-cake-container" class="final-cake-container hidden">
+          <div class="cake-interaction-pod" id="cake-interactive-pod" onclick="blowFinalCakeCandles()" tabindex="0" role="button" aria-label="Blow out 22 Birthday Candles">
+            
+            <!-- Illustrated Two-Tier Cake SVG / Canvas -->
+            <div class="two-tier-cake-art" id="two-tier-cake-art">
+              <!-- Tier 2 (Top) -->
+              <div class="cake-tier cake-tier-top">
+                <!-- Glowing 22 Candles -->
+                <div class="candles-22-wrapper" id="candles-22-wrapper">
+                  <div class="candle-digit candle-left">
+                    <div class="candle-flame" id="flame-left"></div>
+                    <span class="digit-text">2</span>
+                  </div>
+                  <div class="candle-digit candle-right">
+                    <div class="candle-flame" id="flame-right"></div>
+                    <span class="digit-text">2</span>
+                  </div>
+                </div>
+                <div class="cake-frosting-drip drip-top"></div>
+                <div class="cake-pearls-row"></div>
+              </div>
+
+              <!-- Tier 1 (Bottom) -->
+              <div class="cake-tier cake-tier-bottom">
+                <div class="cake-frosting-drip drip-bottom"></div>
+                <div class="cake-ribbon-gold"></div>
+                <div class="cake-floral-accents">🌸 ✧ 🌸</div>
+              </div>
+
+              <!-- Cake Pedestal Stand -->
+              <div class="cake-pedestal-stand"></div>
+            </div>
+
+            <!-- Cake Hover Tooltip -->
+            <div class="cake-hover-callout" id="cake-hover-callout">
+              <span class="wish-hint">Make a wish... ✨</span>
+            </div>
+
+            <!-- Wish Made Celebratory Message -->
+            <div class="wish-made-badge hidden" id="wish-made-badge">
+              Wish made? ✦
+            </div>
+          </div>
+        </div>
+
+        <!-- THE WRAPPED BIRTHDAY GIFT BOX & FINAL VIDEO LINK -->
+        <div id="final-gift-container" class="final-gift-container hidden">
+          <div class="final-gift-pod" id="final-gift-pod" onclick="openFinalGiftBox()" tabindex="0" role="button" aria-label="Open your final birthday gift">
+            
+            <div class="gift-box-visual" id="gift-box-visual">
+              <div class="gift-box-lid" id="gift-box-lid">
+                <div class="gift-ribbon-bow">🎀</div>
+              </div>
+              <div class="gift-box-base">
+                <div class="gift-ribbon-vertical"></div>
+                <div class="gift-ribbon-horizontal"></div>
+              </div>
+              <div class="gift-interior-beam" id="gift-interior-beam"></div>
+            </div>
+
+            <div class="gift-hover-callout" id="gift-hover-callout">
+              <span class="gift-hint">There might be something waiting inside. ✦</span>
+            </div>
+          </div>
+
+          <!-- The Final Letter Card with Drive Video Link -->
+          <div id="final-gift-letter-card" class="final-gift-letter-card hidden">
+            <div class="letter-tag">A LITTLE SOMETHING FOR YOU ♡</div>
+            <p class="letter-quote">“Because some memories deserve more than a website.”</p>
+            <p class="letter-question">Ready to see what we made for you?</p>
+            
+            <button id="final-drive-gift-btn" class="magical-reveal-btn final-gift-action-btn" onclick="triggerFinalDriveVideo()">
+              <span class="btn-shine-sweep"></span>
+              <span class="btn-text">✦ OPEN YOUR FINAL GIFT ✦</span>
+            </button>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Discreet Footer -->
+      <footer class="mystery-footer">
+        <button id="final-restart-btn" class="text-link-btn" onclick="document.getElementById('restart-modal').classList.remove('hidden')">↻ Start the mystery again</button>
+      </footer>
+    </section>
+
   </div><!-- /#app -->
+
+  <!-- ==================================================== -->
+  <!-- 3.5 FINAL RIDDLE MODAL — WHO IS MISSING?            -->
+  <!-- ==================================================== -->
+  <div id="final-riddle-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="expanded-card-wrapper">
+      <div id="final-expanded-card" class="magical-memory-popup final-riddle-card" role="dialog" aria-modal="true">
+        <button class="memory-close-btn" onclick="closeFinalRiddleModal()" aria-label="Close riddle" title="Close riddle">
+          <span class="close-x">×</span>
+        </button>
+
+        <div class="memory-top-badge-wrapper">
+          <div class="memory-pill-badge">
+            <span class="pill-sparkle">✦</span>
+            <span class="pill-title">THE FINAL QUESTION</span>
+            <span class="pill-sparkle">✦</span>
+          </div>
+          <div class="memory-number-sub">CHAPTER 22</div>
+        </div>
+
+        <div class="mystery-clue-note">
+          <div class="who-is-this-heading">Think carefully... ✦</div>
+          <p class="question-text">
+            “Who is the one person you haven't found yet?”
+          </p>
+        </div>
+
+        <form id="final-riddle-form" onsubmit="event.preventDefault(); checkFinalAnswer();">
+          <div class="input-glow-container">
+            <span class="input-sparkle-decor">✦</span>
+            <input 
+              type="text" 
+              id="final-answer-input" 
+              class="magical-memory-input" 
+              placeholder="I think it's... ✦" 
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="modal-action-buttons">
+            <button type="submit" id="final-reveal-submit-btn" class="magical-reveal-btn">
+              <span class="btn-shine-sweep"></span>
+              <span class="btn-text">✦ REVEAL THE LAST PERSON ✦</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Friendly Microcopy Error Feedback -->
+        <div id="final-error-feedback" class="playful-feedback-msg hidden"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================================================== -->
   <!-- 3. ENCHANTED BIRTHDAY MEMORY CARD POPUP              -->
