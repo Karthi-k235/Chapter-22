@@ -36,7 +36,7 @@ const giftContent = {
     "Happy Birthday! ❤️"
   ],
   // Used if giftType === "photo"
-  photoUrl: "assets/friends/friend1.svg",
+  photoUrl: "assets/shill/final.png",
   // Used if giftType === "video"
   videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   // Used if giftType === "playlist" or "link"
@@ -49,8 +49,8 @@ const friends = [
   {
     id: 1,
     name: "Ananya",
-    silhouette: "assets/shill/pic1.png",
-    revealedImage: "assets/friends/friend1.svg",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/shill/final.png",
     question: "Who is always 20 minutes late to every single hangout but shows up with an iced coffee in hand?",
     answers: ["ananya", "brunch", "breakfast", "coffee", "every meeting", "everything", "hangout", "lunch"],
     hint: "Think about the friend who always shows up with an iced latte apologizing...",
@@ -58,39 +58,39 @@ const friends = [
   },
   {
     id: 2,
-    name: "Sneha",
-    silhouette: "assets/shill/pic2.png",
-    revealedImage: "assets/friends/friend2.svg",
-    question: "Who would record 50 draft takes before finally posting a single Instagram Reel?",
-    answers: ["sneha", "50", "fifty", "100", "hundred", "too many", "infinite", "30", "40"],
-    hint: "Think about our content creator queen who needs the angles to be 100% perfect...",
-    message: "Chapter 22 looks stunning on you, queen! Ready to film 100 TikToks for your birthday! 👑✨"
+    name: "Karthik",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/friends/friend2.png",
+    question: "Similarities are everywhere in this world, but ours are way more than coincidences. The last words we said together before going were...?",
+    answers: ["Pichi Palu Rakalu"],
+    hint: "At the bench we said it at the same time...",
+    message: "Some words become special because two people say them together. Happy 22nd Birthday, Haripriya! 💕"
   },
   {
     id: 3,
-    name: "Pooja",
-    silhouette: "assets/shill/pic3.png",
-    revealedImage: "assets/friends/friend3.svg",
-    question: "Who secretively orders 2 AM pizza during every single sleepover?",
-    answers: ["pooja", "pizza", "ramen", "french fries", "fries", "boba", "burgers", "cheese pizza"],
-    hint: "It's warm, cheesy, and arrives when everyone else is supposed to be sleeping...",
-    message: "Happy Birthday Haripriya! 22 years of beauty and 2 AM pizza cravings. Love you endlessly! 🍕💕"
+    name: "Farzana",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/friends/friend3.png",
+    question: "Three bikes, dead phones, and absolute panic in Kerala! After an entire hour of frantically searching for each other, where did our lost group finally reunite?",
+    answers: ["MattuPetty Dam", "Mattupetty Dam", "Mattu Petty Dam", "Mattupetty"],
+    hint: "The pineapples and fridge magnets were great from this place.",
+    message: "Happy Birthday Haripriya! From three bikes and dead phones to finding each other at Mattupetty Dam, every adventure with you becomes a memory worth keeping! 💕"
   },
   {
     id: 4,
-    name: "Diya",
-    silhouette: "assets/silhouettes/friend4.svg",
-    revealedImage: "assets/friends/friend4.svg",
-    question: "Who always carries a full first-aid kit, pain meds, and wet wipes in her bag 'just in case'?",
-    answers: ["diya", "bandaid", "band aid", "band aids", "medicine", "wet wipes", "tissues", "hand sanitizer"],
-    hint: "The mom of the group who has a solution for every life emergency...",
-    message: "My dearest Haripriya, welcome to Chapter 22! I'll always be here to hold your bag and your hand! 🩹💖"
+    name: "Diwakar",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/friends/friend4.png",
+    question: "Two college entrepreneurs, Three chaotic days, and a whole lot of deep-fried goodness. I was there, you were there, all of our friends were there, but what was the name of the 'royal' stall we ruled for three days?",
+    answers: ["Crispy Kingdom"],
+    hint: "Rajulu Unde Placee",
+    message: "Three chaotic days, one royal stall, and countless crispy memories. Happy Birthday, Diwakar! 👑✨"
   },
   {
     id: 5,
     name: "Riya",
-    silhouette: "assets/silhouettes/friend5.svg",
-    revealedImage: "assets/friends/friend5.svg",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/shill/final.png",
     question: "Which friend plays Taylor Swift on repeat the second she gets the aux cord in the car?",
     answers: ["riya", "taylor swift", "taylor", "swift", "ariana", "dupa lipa", "bts"],
     hint: "She knows every single lyric from '1989' and 'Red'...",
@@ -99,8 +99,8 @@ const friends = [
   {
     id: 6,
     name: "Kavya",
-    silhouette: "assets/silhouettes/friend6.svg",
-    revealedImage: "assets/friends/friend6.svg",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/shill/final.png",
     question: "Who goes full FBI detective mode the second someone sends a mysterious 2-word text?",
     answers: ["kavya", "stalking", "fbi mode", "overthinking", "screenshots", "detective", "fbi"],
     hint: "She finds their location, horoscope, and 2016 Facebook posts in 3 minutes flat...",
@@ -109,8 +109,8 @@ const friends = [
   {
     id: 7,
     name: "Nitya",
-    silhouette: "assets/silhouettes/friend7.svg",
-    revealedImage: "assets/friends/friend7.svg",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/shill/final.png",
     question: "Who has over 1,000 funny candid photos of Haripriya saved in a secret vault folder?",
     answers: ["nitya", "1000", "thousands", "too many", "million", "endless", "500"],
     hint: "Enough funny camera roll memories to blackmail you for the next 50 years...",
@@ -119,8 +119,8 @@ const friends = [
   {
     id: 8,
     name: "Shreya",
-    silhouette: "assets/silhouettes/friend8.svg",
-    revealedImage: "assets/friends/friend8.svg",
+    silhouette: "assets/shill/final.png",
+    revealedImage: "assets/shill/final.png",
     question: "Who screams 'SLAYYY QUEEN!' the second Haripriya walks into the room looking gorgeous?",
     answers: ["shreya", "slay", "ate", "mother", "gorgeous", "queen", "stunning", "slayyy"],
     hint: "Your biggest hype woman on the planet who always yells your praises...",
@@ -430,6 +430,37 @@ function startChapter(isReturning = false) {
   }, isReturning ? 0 : 1200);
 }
 
+// Ambient Drifting Memory Dust for Popup
+function initMemoryDust() {
+  const container = document.getElementById('memory-dust-container');
+  if (!container) return;
+
+  container.innerHTML = '';
+  for (let i = 0; i < 10; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'memory-dust-particle';
+    const size = Math.random() * 5 + 3;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${Math.random() * 80 + 10}%`;
+    particle.style.top = `${Math.random() * 60 + 30}%`;
+    particle.style.animationDelay = `${Math.random() * 3}s`;
+    particle.style.animationDuration = `${Math.random() * 3 + 3}s`;
+    container.appendChild(particle);
+  }
+}
+
+// Interactive Corner Sticker Peel Mechanic
+function toggleCornerPeel() {
+  const peel = document.getElementById('interactive-peel-cover');
+  const label = document.getElementById('peel-cover-label');
+  if (!peel || !label) return;
+
+  const isPeeking = peel.classList.toggle('is-peeking');
+  label.textContent = isPeeking ? "Psst... peek? 👀" : "A LITTLE SECRET...";
+  playAmbientSound('chime');
+}
+
 // Render the 8 Individual Mystery Memory Cards (4 Top, 4 Bottom)
 function renderFriendsGrid() {
   const grid = document.getElementById('cards-grid');
@@ -465,7 +496,7 @@ function renderFriendsGrid() {
 
       <div class="card-label-badge">
         <span class="card-star-accent">${isDiscovered ? '✓' : '✦'}</span>
-        <span class="card-label-text">${isDiscovered ? friend.name + ' ♡' : `#0${idx + 1} · ????`}</span>
+        <span class="card-label-text">${isDiscovered ? friend.name + ' ♡' : '✦ ♡ ???? ♡ ✦'}</span>
       </div>
     `;
 
@@ -487,16 +518,11 @@ function openCardMystery(friendId) {
   if (!friend) return;
 
   const isDiscovered = gameState.revealedIds.includes(friendId);
-
-  if (isDiscovered) {
-    showFriendRevealModal(friend, false);
-  } else {
-    playAmbientSound('chime');
-    openPuzzleModal(friend);
-  }
+  playAmbientSound('chime');
+  openPuzzleModal(friend, isDiscovered);
 }
 
-// Update Friend Collection Indicator Stars & Counter
+// Update Friend Collection Indicator Stars & diya
 function updateProgressBar() {
   const foundCount = gameState.revealedIds.length;
   const totalCount = friends.length;
@@ -568,29 +594,92 @@ function animateFlyingStar(friendId, onComplete) {
 }
 
 // ==========================================
-// PUZZLE MODAL & ANSWER VALIDATION
+// ENCHANTED MEMORY CARD POPUP & MULTI-STAGE REVEAL
 // ==========================================
 
-function openPuzzleModal(friend) {
+function openPuzzleModal(friend, isSolved = false) {
   gameState.currentFriendId = friend.id;
 
   const idx = friends.findIndex(f => f.id === friend.id) + 1;
-  document.getElementById('modal-mystery-num').textContent = `✦ MYSTERY #${idx < 10 ? '0' + idx : idx} ✦`;
+  const formattedNum = idx < 10 ? '0' + idx : idx;
+  
+  document.getElementById('modal-mystery-num').textContent = `MYSTERY No. ${formattedNum}`;
   document.getElementById('modal-silhouette-img').src = friend.silhouette;
+  document.getElementById('peel-photo-teaser').src = friend.revealedImage;
+  document.getElementById('modal-revealed-img').src = friend.revealedImage;
   document.getElementById('modal-question').textContent = `"${friend.question}"`;
 
-  // Reset inputs & hints
-  const input = document.getElementById('answer-input');
-  input.value = '';
-  input.classList.remove('shake-input');
-  
-  document.getElementById('error-feedback').classList.add('hidden');
-  document.getElementById('hint-box').classList.add('hidden');
-  document.getElementById('hint-box').textContent = friend.hint || "No hint for this mystery!";
+  // Reset interactive peel cover
+  const peel = document.getElementById('interactive-peel-cover');
+  if (peel) {
+    peel.classList.remove('is-peeking');
+    document.getElementById('peel-cover-label').textContent = "A LITTLE SECRET...";
+  }
+
+  // Clear previous celebration sparkles
+  const sparkleBurst = document.getElementById('polaroid-sparkle-burst');
+  if (sparkleBurst) sparkleBurst.innerHTML = '';
+
+  const expandedCard = document.getElementById('expanded-card');
+  if (expandedCard) {
+    expandedCard.classList.remove('shake-card');
+    if (isSolved) {
+      expandedCard.classList.add('is-solved');
+    } else {
+      expandedCard.classList.remove('is-solved');
+    }
+  }
+
+  const clueNote = document.getElementById('modal-clue-note');
+  const formSection = document.getElementById('modal-form-section');
+  const celebrateSection = document.getElementById('modal-celebrate-section');
+  const silhouetteLayer = document.getElementById('modal-silhouette-layer');
+  const revealedLayer = document.getElementById('modal-revealed-layer');
+
+  if (isSolved) {
+    // Solved Memory View
+    if (silhouetteLayer) silhouetteLayer.style.display = 'none';
+    if (peel) peel.style.display = 'none';
+    if (revealedLayer) revealedLayer.classList.remove('hidden');
+    if (clueNote) clueNote.style.display = 'none';
+    if (formSection) formSection.classList.add('hidden');
+    if (celebrateSection) celebrateSection.classList.remove('hidden');
+
+    document.getElementById('modal-solved-friend-name').textContent = friend.name;
+    document.getElementById('modal-solved-friend-message').textContent = `"${friend.message}"`;
+  } else {
+    // Unsolved Guessing View
+    if (silhouetteLayer) {
+      silhouetteLayer.style.display = 'flex';
+      silhouetteLayer.style.opacity = '1';
+    }
+    if (peel) peel.style.display = 'flex';
+    if (revealedLayer) revealedLayer.classList.add('hidden');
+    if (clueNote) clueNote.style.display = 'block';
+    if (formSection) formSection.classList.remove('hidden');
+    if (celebrateSection) celebrateSection.classList.add('hidden');
+
+    const input = document.getElementById('answer-input');
+    if (input) {
+      input.value = '';
+      input.disabled = false;
+    }
+    
+    document.getElementById('error-feedback').classList.add('hidden');
+    document.getElementById('hint-box').classList.add('hidden');
+    document.getElementById('hint-text-content').textContent = friend.hint || "Think about your favorite memories together!";
+  }
 
   const modal = document.getElementById('puzzle-modal');
   modal.classList.remove('hidden');
-  input.focus();
+  initMemoryDust();
+
+  if (!isSolved) {
+    setTimeout(() => {
+      const input = document.getElementById('answer-input');
+      if (input) input.focus();
+    }, 200);
+  }
 }
 
 function closePuzzleModal() {
@@ -600,9 +689,10 @@ function closePuzzleModal() {
 function toggleHint() {
   const hintBox = document.getElementById('hint-box');
   hintBox.classList.toggle('hidden');
+  playAmbientSound('chime');
 }
 
-// Check Answer Validation
+// Multi-Stage Cinematic Answer Reveal Sequence (Photo is the Hero)
 function checkAnswer() {
   const input = document.getElementById('answer-input');
   const inputVal = input.value.trim();
@@ -620,32 +710,85 @@ function checkAnswer() {
   });
 
   if (isCorrect) {
-    // Answer Correct!
+    // PHASE 1: Correct Answer Recognition & Audio (0-200ms)
+    input.disabled = true;
     playAmbientSound('celebrate');
-    closePuzzleModal();
-    
-    if (!gameState.revealedIds.includes(friend.id)) {
-      gameState.revealedIds.push(friend.id);
-      saveProgress();
-    }
 
-    // Trigger star flight animation to collection bar
-    animateFlyingStar(friend.id, () => {
-      renderFriendsGrid();
-      updateProgressBar();
-      showFriendRevealModal(friend, true);
-    });
+    const expandedCard = document.getElementById('expanded-card');
+    const silhouetteLayer = document.getElementById('modal-silhouette-layer');
+    const peel = document.getElementById('interactive-peel-cover');
+    const revealedLayer = document.getElementById('modal-revealed-layer');
+    const clueNote = document.getElementById('modal-clue-note');
+    const formSection = document.getElementById('modal-form-section');
+    const celebrateSection = document.getElementById('modal-celebrate-section');
+    const sparkleBurst = document.getElementById('polaroid-sparkle-burst');
+
+    // PHASE 2: Photo Becomes Hero + Ambient Glow Aura (250ms)
+    setTimeout(() => {
+      if (expandedCard) expandedCard.classList.add('is-solved');
+
+      // Sparkles placed purely around the outside of the frame
+      if (sparkleBurst) {
+        sparkleBurst.innerHTML = `
+          <span style="position:absolute; top:-12px; left:12%; color:#E9B85C; font-size:17px; text-shadow:0 0 8px #E9B85C; animation:starCollectPulse 1.2s infinite alternate;">✦</span>
+          <span style="position:absolute; top:-10px; right:15%; color:#F6C8D2; font-size:15px; text-shadow:0 0 8px #F6C8D2; animation:starCollectPulse 1s infinite alternate;">✧</span>
+          <span style="position:absolute; bottom:-12px; left:15%; color:#F3D58A; font-size:14px; text-shadow:0 0 8px #F3D58A; animation:starCollectPulse 1.4s infinite alternate;">⋆</span>
+          <span style="position:absolute; bottom:-10px; right:12%; color:#E9B85C; font-size:18px; text-shadow:0 0 8px #E9B85C; animation:starCollectPulse 1.1s infinite alternate;">✦</span>
+        `;
+      }
+    }, 250);
+
+    // PHASE 3 & 4: Peel Lifts Away & Clean Photo Materializes with Focus (500ms)
+    setTimeout(() => {
+      if (peel) peel.style.display = 'none';
+      if (silhouetteLayer) {
+        silhouetteLayer.style.opacity = '0';
+        setTimeout(() => { silhouetteLayer.style.display = 'none'; }, 400);
+      }
+      if (revealedLayer) revealedLayer.classList.remove('hidden');
+    }, 500);
+
+    // PHASE 5: Transition to Personal Stationery Letter (850ms)
+    setTimeout(() => {
+      if (clueNote) clueNote.style.display = 'none';
+      if (formSection) formSection.classList.add('hidden');
+      
+      if (celebrateSection) {
+        document.getElementById('modal-solved-friend-name').textContent = friend.name;
+        document.getElementById('modal-solved-friend-message').textContent = `"${friend.message}"`;
+        celebrateSection.classList.remove('hidden');
+      }
+
+      if (!gameState.revealedIds.includes(friend.id)) {
+        gameState.revealedIds.push(friend.id);
+        saveProgress();
+      }
+
+      // PHASE 6: Star Collection Flight to Header Bar
+      animateFlyingStar(friend.id, () => {
+        renderFriendsGrid();
+        updateProgressBar();
+      });
+    }, 850);
 
   } else {
-    // Answer Incorrect - Playful Shake & Retry Microcopy
+    // Incorrect Answer - Playful Card Shake & Microcopy
     playAmbientSound('wrong');
-    input.classList.remove('shake-input');
-    void input.offsetWidth; // Trigger reflow for animation restart
-    input.classList.add('shake-input');
+    const expandedCard = document.getElementById('expanded-card');
+    if (expandedCard) {
+      expandedCard.classList.remove('shake-card');
+      void expandedCard.offsetWidth; // Reflow
+      expandedCard.classList.add('shake-card');
+    }
 
     const feedback = document.getElementById('error-feedback');
-    const randomMsg = playfulErrorMessages[Math.floor(Math.random() * playfulErrorMessages.length)];
-    feedback.textContent = randomMsg;
+    const retryPhrases = [
+      "Hmm... not quite, detective ✦",
+      "The mystery is still keeping its secret 👀",
+      "Close! You know this person... think again ♡",
+      "The shadows aren't convinced yet ✨"
+    ];
+    feedback.textContent = retryPhrases[Math.floor(Math.random() * retryPhrases.length)];
     feedback.classList.remove('hidden');
   }
 }

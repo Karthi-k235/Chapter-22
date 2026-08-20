@@ -32,8 +32,8 @@ Chapter-22/
 ├── style.css             # Pastel color palette, glassmorphism, responsive grid & animations
 ├── script.js            # Editable birthday configuration & interactive game engine
 ├── assets/
-│   ├── silhouettes/     # Transparent silhouette SVG/PNG graphics (friend1.svg ... friend8.svg)
-│   ├── friends/         # Revealed polaroid friend avatars (friend1.svg ... friend8.svg)
+│   ├── shill/           # Final silhouette image used throughout the mystery (final.png)
+│   ├── friends/         # Legacy friend avatars kept for reference
 │   └── gift/            # Floating giftbox SVG graphic
 └── README.md            # Project documentation
 ```
@@ -64,8 +64,8 @@ To add a new friend (e.g. Friend #9), simply append another object to the `frien
 {
   id: 9,
   name: "Friend Name",
-  silhouette: "assets/silhouettes/friend9.svg",
-  revealedImage: "assets/friends/friend9.svg",
+  silhouette: "assets/shill/final.png",
+  revealedImage: "assets/shill/final.png",
   question: "What is your custom question?",
   answers: ["answer1", "answer2"],
   hint: "Optional hint text",

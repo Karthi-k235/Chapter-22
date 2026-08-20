@@ -248,51 +248,126 @@
   </div><!-- /#app -->
 
   <!-- ==================================================== -->
-  <!-- 3. EXPANDED MYSTERY CARD MODAL                       -->
+  <!-- 3. ENCHANTED BIRTHDAY MEMORY CARD POPUP              -->
   <!-- ==================================================== -->
   <div id="puzzle-modal" class="modal-overlay hidden" aria-hidden="true">
+    <!-- Ambient drifting memory dust particles -->
+    <div id="memory-dust-container" class="memory-dust-wrapper"></div>
+
     <div class="expanded-card-wrapper">
-      <div id="expanded-card" class="expanded-card glass-card">
-        <button class="modal-close-btn" onclick="closePuzzleModal()" aria-label="Close mystery">✦ close</button>
-        
-        <div class="modal-header">
-          <span id="modal-mystery-num" class="mystery-badge">✦ MYSTERY #01 ✦</span>
-          <p class="mystery-hint-sub">“Someone is hiding here...”</p>
+      <div id="expanded-card" class="magical-memory-popup" role="dialog" aria-modal="true">
+        <!-- Floating Circular Close Button -->
+        <button class="memory-close-btn" onclick="closePuzzleModal()" aria-label="Back to the mystery" title="Back to the mystery">
+          <span class="close-x">×</span>
+        </button>
+
+        <!-- Top Badge -->
+        <div class="memory-top-badge-wrapper">
+          <div class="memory-pill-badge">
+            <span class="pill-sparkle">✦</span>
+            <span class="pill-title">A LITTLE MYSTERY</span>
+            <span class="pill-sparkle">✦</span>
+          </div>
+          <div id="modal-mystery-num" class="memory-number-sub">MYSTERY No. 01</div>
         </div>
 
-        <div class="modal-body">
-          <div id="expanded-silhouette-frame" class="silhouette-preview-container">
-            <div class="silhouette-halo-glow"></div>
-            <img id="modal-silhouette-img" src="" alt="Mystery silhouette" class="modal-silhouette-thumb">
+        <!-- The Mystery Polaroid Visual with Peel Mechanic -->
+        <div class="mystery-polaroid-frame" id="mystery-polaroid">
+          <div class="polaroid-inner-wrapper">
+            <!-- Base Layer: The Real Friend Photo (Teaser underneath corner) -->
+            <img id="peel-photo-teaser" src="" alt="Photo teaser" class="photo-teaser-underneath">
+
+            <!-- Shadow / Silhouette Layer -->
+            <div id="modal-silhouette-layer" class="polaroid-silhouette-layer">
+              <img id="modal-silhouette-img" src="" alt="Mystery silhouette" class="modal-silhouette-img">
+              <div class="silhouette-ambient-glow"></div>
+            </div>
+
+            <!-- Interactive Paper / Sticker Peel Cover -->
+            <div id="interactive-peel-cover" class="interactive-peel-cover" onclick="toggleCornerPeel()" tabindex="0" role="button" aria-label="Peek behind secret sticker">
+              <div class="peel-surface">
+                <span class="peel-sparkle-icon">✨</span>
+                <span id="peel-cover-label" class="peel-cover-text">A LITTLE SECRET...</span>
+              </div>
+              <div class="peel-folded-corner">
+                <div class="curl-shadow"></div>
+                <div class="curl-crease"></div>
+                <span class="corner-peek-hint">👀</span>
+              </div>
+            </div>
+
+            <!-- Revealed Photo Layer (Active upon solving - 100% clean photo) -->
+            <div id="modal-revealed-layer" class="polaroid-revealed-layer hidden">
+              <img id="modal-revealed-img" src="" alt="Revealed friend photo" class="modal-revealed-img">
+            </div>
+
+            <!-- Frame Outer Glow Aura -->
+            <div class="frame-ambient-aura"></div>
+
+            <!-- Celebration Sparkles Burst Container (Outside Frame) -->
+            <div id="polaroid-sparkle-burst" class="polaroid-sparkle-burst"></div>
           </div>
+        </div>
 
-          <div class="who-is-this-tag">WHO IS THIS?</div>
-
+        <!-- Question Section in Soft Paper Note Clue (Hidden during solve view) -->
+        <div id="modal-clue-note" class="mystery-clue-note">
+          <div class="who-is-this-heading">WHO IS THIS? ✦</div>
           <p id="modal-question" class="question-text">
             "Question goes here..."
           </p>
+        </div>
 
+        <!-- Guess Input Form & Controls (Active during guessing) -->
+        <div id="modal-form-section" class="modal-form-section">
           <form id="answer-form" onsubmit="event.preventDefault(); checkAnswer();">
-            <div class="answer-input-wrapper">
+            <div class="input-glow-container">
+              <span class="input-sparkle-decor">✦</span>
               <input 
                 type="text" 
                 id="answer-input" 
-                class="styled-input modal-input" 
-                placeholder="Who do you think it is?" 
+                class="magical-memory-input" 
+                placeholder="Type your guess here... ✦" 
                 autocomplete="off"
               >
             </div>
 
-            <div class="modal-actions">
-              <button type="submit" id="reveal-submit-btn" class="primary-btn submit-btn">✦ REVEAL THEM ✦</button>
-              <button type="button" id="toggle-hint-btn" class="secondary-btn hint-btn" onclick="toggleHint()">Need a little hint? ✦</button>
+            <div class="modal-action-buttons">
+              <button type="submit" id="reveal-submit-btn" class="magical-reveal-btn">
+                <span class="btn-shine-sweep"></span>
+                <span class="btn-text">✦ REVEAL MY FRIEND ✦</span>
+              </button>
+
+              <button type="button" id="toggle-hint-btn" class="handwritten-hint-toggle" onclick="toggleHint()">
+                Psst... need a tiny clue? 💡
+              </button>
             </div>
           </form>
 
-          <!-- Feedback & Hint Messages -->
-          <div id="error-feedback" class="feedback-msg error-msg hidden"></div>
-          <div id="hint-box" class="hint-box hidden"></div>
+          <!-- Playful Microcopy Error Message -->
+          <div id="error-feedback" class="playful-feedback-msg hidden"></div>
+
+          <!-- Folded Hint Note -->
+          <div id="hint-box" class="folded-hint-note hidden">
+            <div class="folded-note-header">
+              <span class="hint-bulb">💡</span>
+              <span class="hint-title">A tiny clue...</span>
+            </div>
+            <p id="hint-text-content" class="hint-text">Hint goes here...</p>
+          </div>
         </div>
+
+        <!-- Post-Reveal Celebration & Message View (Active upon solve) -->
+        <div id="modal-celebrate-section" class="modal-celebrate-section hidden">
+          <div class="celebrate-subhead">✦ YOU FOUND THEM ✦</div>
+          <h3 id="modal-solved-friend-name" class="solved-friend-name">Friend Name</h3>
+          <div class="friend-stationery-note">
+            <p id="modal-solved-friend-message" class="friend-note-text">"Personal message..."</p>
+          </div>
+          <button type="button" class="magical-reveal-btn continue-memory-btn" onclick="closePuzzleModal()">
+            <span class="btn-text">CONTINUE TO MYSTERY ROOM ✦</span>
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
