@@ -631,7 +631,7 @@ function openPuzzleModal(friend, isSolved = false) {
   
   document.getElementById('modal-mystery-num').textContent = `MYSTERY No. ${formattedNum}`;
   document.getElementById('modal-silhouette-img').src = friend.silhouette;
-  document.getElementById('peel-photo-teaser').src = friend.revealedImage;
+  document.getElementById('peel-photo-teaser').removeAttribute('src');
   document.getElementById('modal-revealed-img').src = friend.revealedImage;
   document.getElementById('modal-question').textContent = `"${friend.question}"`;
 
@@ -898,72 +898,99 @@ function triggerFinalMysteryTransition() {
 
 // Initialize Final Mystery Screen & Ambient Particles
 function initFinalMysteryScreen() {
-  // Populate Player Names
   const name = gameState.playerName || "Haripriya";
-  const nameEl = document.getElementById('final-birthday-girl-name');
-  if (nameEl) nameEl.textContent = name;
 
-  const signEl = document.getElementById('final-girl-name-sign');
-  if (signEl) signEl.textContent = name;
+  // Populate all name placeholders
+  const nameEls = ['final-birthday-girl-name', 'final-girl-name-sign'];
+  nameEls.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = name;
+  });
 
+  // Set hero image
   const girlImg = document.getElementById('final-birthday-girl-img');
   if (girlImg) girlImg.src = BIRTHDAY_GIRL_IMAGE;
 
-  // Final Screen Ambient Bubbles
-  const bubblesContainer = document.getElementById('final-bubbles-container');
-  if (bubblesContainer) {
-    bubblesContainer.innerHTML = '';
-    for (let i = 0; i < 18; i++) {
-      const bubble = document.createElement('div');
-      bubble.className = 'dream-bubble';
-      const size = Math.random() * 34 + 18;
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${Math.random() * 95}%`;
-      bubble.style.top = `${Math.random() * 85 + 10}%`;
-      bubble.style.animationDelay = `${Math.random() * 7}s`;
-      bubble.style.animationDuration = `${Math.random() * 8 + 10}s`;
-      bubblesContainer.appendChild(bubble);
-    }
+  // Generate ambient floating particles
+  generateFinalParticles();
+
+  const preReveal = document.getElementById('final-pre-reveal');
+  const postReveal = document.getElementById('final-post-reveal');
+
+  // Check saved state — if already revealed, show post-reveal directly
+  if (gameState.finalPersonRevealed) {
+    if (preReveal) preReveal.classList.add('hidden');
+    if (postReveal) postReveal.classList.remove('hidden');
+    showPostRevealState();
+  } else {
+    if (preReveal) preReveal.classList.remove('hidden');
+    if (postReveal) postReveal.classList.add('hidden');
   }
+}
+
+// Generate floating ambient particles (stars, hearts, dots, sparkles)
+function generateFinalParticles() {
+  const container = document.getElementById('final-particles-container');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const types = [
+    { cls: 'star', char: '✦' },
+    { cls: 'heart', char: '♡' },
+    { cls: 'dot', char: '·' },
+    { cls: 'sparkle', char: '✧' }
+  ];
+
+  for (let i = 0; i < 20; i++) {
+    const type = types[Math.floor(Math.random() * types.length)];
+    const particle = document.createElement('div');
+    particle.className = `ambient-particle ${type.cls}`;
+    particle.textContent = type.char;
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${60 + Math.random() * 40}%`;
+    particle.style.animationDuration = `${8 + Math.random() * 12}s`;
+    particle.style.animationDelay = `${Math.random() * 10}s`;
+    particle.style.fontSize = `${8 + Math.random() * 8}px`;
+    container.appendChild(particle);
+  }
+}
+
+// Show the post-reveal storybook state (called after correct answer or on reload)
+function showPostRevealState() {
+  const finalScreen = document.getElementById('final-mystery-screen');
+  if (finalScreen) finalScreen.classList.add('celebration-mode');
+
+  const preReveal = document.getElementById('final-pre-reveal');
+  if (preReveal) preReveal.classList.add('hidden');
+
+  const postReveal = document.getElementById('final-post-reveal');
+  if (postReveal) postReveal.classList.remove('hidden');
 
   // Check saved state for completed stages
-  if (gameState.finalPersonRevealed) {
-    const finalScreen = document.getElementById('final-mystery-screen');
-    if (finalScreen) finalScreen.classList.add('celebration-mode');
-
-    const silFrame = document.getElementById('final-silhouette-frame');
-    if (silFrame) silFrame.style.display = 'none';
-
-    const revealedHero = document.getElementById('final-revealed-hero');
-    if (revealedHero) revealedHero.classList.remove('hidden');
-
-    const emotionalCard = document.getElementById('final-emotional-card');
-    if (emotionalCard) emotionalCard.classList.remove('hidden');
-
-    const cakeContainer = document.getElementById('final-cake-container');
-    if (cakeContainer) cakeContainer.classList.remove('hidden');
-
-    if (gameState.cakeBlown) {
-      document.querySelectorAll('.candle-digit').forEach(c => c.classList.add('extinguished'));
-      const cakeCallout = document.getElementById('cake-hover-callout');
-      if (cakeCallout) cakeCallout.style.display = 'none';
-      const wishBadge = document.getElementById('wish-made-badge');
-      if (wishBadge) wishBadge.classList.remove('hidden');
-
-      const giftContainer = document.getElementById('final-gift-container');
-      if (giftContainer) giftContainer.classList.remove('hidden');
-
-      if (gameState.giftOpened) {
-        const giftPod = document.getElementById('final-gift-pod');
-        if (giftPod) giftPod.classList.add('is-open');
-        const giftCallout = document.getElementById('gift-hover-callout');
-        if (giftCallout) giftCallout.style.display = 'none';
-        const giftLetter = document.getElementById('final-gift-letter-card');
-        if (giftLetter) giftLetter.classList.remove('hidden');
-      }
-    }
+  if (gameState.cakeBlown) {
+    document.querySelectorAll('.candle-digit').forEach(c => c.classList.add('extinguished'));
+    const cakeCallout = document.getElementById('cake-hover-callout');
+    if (cakeCallout) cakeCallout.style.display = 'none';
+    const wishBadge = document.getElementById('wish-made-badge');
+    if (wishBadge) wishBadge.classList.remove('hidden');
   }
+
+  if (gameState.giftOpened) {
+    const giftPod = document.getElementById('final-gift-pod');
+    if (giftPod) giftPod.classList.add('is-open');
+    const giftCallout = document.getElementById('gift-hover-callout');
+    if (giftCallout) giftCallout.style.display = 'none';
+    const giftLetter = document.getElementById('final-gift-letter-card');
+    if (giftLetter) giftLetter.classList.remove('hidden');
+  }
+}
+
+// Interactive Star Cluster (Connects into '22' on click)
+function animateStarCluster22() {
+  const cluster = document.getElementById('story-star-cluster');
+  if (!cluster) return;
+  cluster.classList.toggle('connected');
+  playAmbientSound('chime');
 }
 
 // Final Riddle Modal (Who is missing?)
@@ -1020,7 +1047,6 @@ function checkFinalAnswer() {
   const isCorrect = validSelfAliases.some(alias => cleanInput === alias || cleanInput.includes(alias));
 
   if (isCorrect) {
-    // Correct Answer - It was her all along!
     input.disabled = true;
     playAmbientSound('celebrate');
     closeFinalRiddleModal();
@@ -1028,39 +1054,12 @@ function checkFinalAnswer() {
     gameState.finalPersonRevealed = true;
     saveProgress();
 
-    // Sequence of Climax Reveal
-    const silFrame = document.getElementById('final-silhouette-frame');
-    const revealedHero = document.getElementById('final-revealed-hero');
-    const emotionalCard = document.getElementById('final-emotional-card');
-    const cakeContainer = document.getElementById('final-cake-container');
-    const finalScreen = document.getElementById('final-mystery-screen');
+    // Smooth transition into post-reveal state
+    const preReveal = document.getElementById('final-pre-reveal');
+    if (preReveal) preReveal.classList.add('hidden');
 
-    // 1. Silhouette Dissolves (400ms)
-    setTimeout(() => {
-      if (silFrame) {
-        silFrame.style.opacity = '0';
-        setTimeout(() => { silFrame.style.display = 'none'; }, 400);
-      }
-    }, 400);
-
-    // 2. Birthday Girl Photo Materializes (900ms)
-    setTimeout(() => {
-      if (revealedHero) revealedHero.classList.remove('hidden');
-      playAmbientSound('celebrate');
-    }, 900);
-
-    // 3. Emotional Payoff Letter Slides In (1400ms)
-    setTimeout(() => {
-      if (emotionalCard) emotionalCard.classList.remove('hidden');
-    }, 1400);
-
-    // 4. Background Warm Birthday Bloom & Cake Appearance (2200ms)
-    setTimeout(() => {
-      if (finalScreen) finalScreen.classList.add('celebration-mode');
-      if (cakeContainer) cakeContainer.classList.remove('hidden');
-      playAmbientSound('chime');
-    }, 2200);
-
+    showPostRevealState();
+    playAmbientSound('celebrate');
   } else {
     // Friendly Microcopy
     playAmbientSound('wrong');
@@ -1101,17 +1100,10 @@ function blowFinalCakeCandles() {
   const wishBadge = document.getElementById('wish-made-badge');
   if (wishBadge) wishBadge.classList.remove('hidden');
 
-  // Delay before gift box slides in
-  setTimeout(() => {
-    const giftContainer = document.getElementById('final-gift-container');
-    if (giftContainer) {
-      giftContainer.classList.remove('hidden');
-      playAmbientSound('celebrate');
-    }
-  }, 1200);
+  playAmbientSound('celebrate');
 }
 
-// Open Wrapped Birthday Gift Box
+// Open Gift Box with Animation
 function openFinalGiftBox() {
   if (gameState.giftOpened) return;
 
@@ -1121,19 +1113,28 @@ function openFinalGiftBox() {
   playAmbientSound('celebrate');
 
   const giftPod = document.getElementById('final-gift-pod');
-  if (giftPod) giftPod.classList.add('is-open');
+  if (giftPod) {
+    // Shake animation
+    giftPod.style.animation = 'giftShake 0.3s ease';
+    setTimeout(() => {
+      giftPod.style.animation = '';
+      giftPod.classList.add('is-open');
+    }, 350);
+  }
 
   const giftCallout = document.getElementById('gift-hover-callout');
-  if (giftCallout) giftCallout.style.display = 'none';
+  if (giftCallout) {
+    setTimeout(() => { giftCallout.style.display = 'none'; }, 400);
+  }
 
-  // Reveal Final Letter Card with Drive Video Button
+  // Reveal letter card
   setTimeout(() => {
     const letterCard = document.getElementById('final-gift-letter-card');
     if (letterCard) {
       letterCard.classList.remove('hidden');
       playAmbientSound('chime');
     }
-  }, 700);
+  }, 800);
 }
 
 // Trigger Google Drive Video
@@ -1141,6 +1142,32 @@ function triggerFinalDriveVideo() {
   playAmbientSound('celebrate');
   window.open(FINAL_GIFT_URL, "_blank");
 }
+
+// Desktop Cursor Sparkle Trail (extremely subtle)
+(function initCursorSparkle() {
+  if ('ontouchstart' in window) return; // Skip on touch devices
+  
+  let lastSparkle = 0;
+  document.addEventListener('mousemove', function(e) {
+    const now = Date.now();
+    if (now - lastSparkle < 120) return; // Throttle
+    lastSparkle = now;
+
+    const finalScreen = document.getElementById('final-mystery-screen');
+    if (!finalScreen || finalScreen.classList.contains('hidden')) return;
+    if (!finalScreen.classList.contains('celebration-mode')) return;
+
+    const sparkle = document.createElement('div');
+    sparkle.className = 'cursor-sparkle';
+    sparkle.textContent = ['✦', '✧', '·', '♡'][Math.floor(Math.random() * 4)];
+    sparkle.style.left = e.clientX + 'px';
+    sparkle.style.top = e.clientY + 'px';
+    document.body.appendChild(sparkle);
+
+    requestAnimationFrame(() => sparkle.classList.add('fade'));
+    setTimeout(() => sparkle.remove(), 600);
+  });
+})();
 
 // Star Cluster Constellation '22' Interaction
 function animateStarCluster22() {
