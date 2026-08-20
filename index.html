@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 22</title>
+  
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Caveat, Sacramento, Plus Jakarta Sans, Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
+  
+  <!-- CSS StyleSheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Animated Background Layer -->
+  <div id="bg-stars-container" class="bg-layer"></div>
+  <div id="paper-overlay" class="bg-layer"></div>
+
+  <!-- Audio Toggle Button -->
+  <button id="audio-toggle-btn" class="floating-audio-btn" aria-label="Toggle Sound">
+    <span class="audio-icon">♫</span>
+    <span class="audio-label">Music Off</span>
+  </button>
+
+  <!-- App Wrapper -->
+  <div id="app">
+
+    <!-- ==================================================== -->
+    <!-- 1. LANDING / LOGIN SCREEN — DREAMY ROOM SCENE        -->
+    <!-- ==================================================== -->
+    <section id="landing-screen" class="screen active">
+      
+      <!-- Top Fairy Lights Garland & Curtain Drape Atmosphere -->
+      <div class="fairy-lights-garland">
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+        <div class="fairy-bulb"></div>
+      </div>
+
+      <!-- Room Scene Environment Wrapper -->
+      <div class="room-scene-wrapper">
+
+        <!-- Left Room Decor Cluster -->
+        <div class="room-cluster left-cluster">
+          <!-- Floating Pastel Balloons -->
+          <div class="decor-item balloons-item interactive-decor" id="balloons-interaction" role="button" tabindex="0" aria-label="Pop the balloons">
+            <img src="assets/decorations/balloons.svg" alt="Balloons" class="floating-balloons-img">
+          </div>
+
+          <!-- Hanging Polaroid Memory Clips -->
+          <div class="polaroid-decor-group">
+            <div class="polaroid-item pol-1">
+              <img src="assets/Pics/pic1.png" alt="Polaroid 1" class="pol-img">
+              <span class="pol-caption">memories ♡</span>
+            </div>
+            <div class="polaroid-item pol-2">
+              <img src="assets/Pics/pic2.png" alt="Polaroid 1" class="pol-img">
+              <span class="pol-caption">the chaos ✨</span>
+            </div>
+          </div>
+
+          <!-- Stack of Cute Books -->
+          <div class="decor-item books-stack">
+            <div class="book-spine book-1">Chapter 22 ♡</div>
+            <div class="book-spine book-2">Big Dreams</div>
+            <div class="book-spine book-3">Crazy Adventures</div>
+            <div class="book-spine book-4">Many More To Come</div>
+          </div>
+
+          <!-- Handwritten Sticky Note Left -->
+          <div class="sticky-note note-left">
+            <p>Same girl.<br>Bigger dreams.<br><span>Chapter 22 ♡</span></p>
+          </div>
+        </div>
+
+        <!-- Central Enchanted Birthday Invitation Card -->
+        <div class="invitation-card-container">
+          <div class="card-ambient-glow"></div>
+          <div class="invitation-card">
+            
+            <div class="invitation-header">
+              <span class="crown-icon">♕</span>
+              <h1 class="invitation-title">CHAPTER 22</h1>
+              <p class="invitation-subtitle">A little mystery before the birthday gift begins...<br> Kucham Kastapadu </p>
+            </div>
+
+            <div class="invitation-body">
+              <p class="invitation-intro">
+                Something special has been locked away for you.<br>
+                <span>But before you can open it, you'll have to find the people who helped hide it.</span>
+              </p>
+
+              <form id="login-form" onsubmit="event.preventDefault(); startChapter();">
+                <div class="input-group">
+                  <label for="player-name-input" class="input-label">Tell us who's turning 22... ♡</label>
+                  <div class="input-box-wrapper">
+                    <span class="input-flower-icon">✿</span>
+                    <input 
+                      type="text" 
+                      id="player-name-input" 
+                      class="styled-input invitation-input" 
+                      value="Haripriya" 
+                      placeholder="Enter your name..." 
+                      required
+                      autocomplete="off"
+                    >
+                  </div>
+                </div>
+
+                <button type="submit" id="enter-btn" class="primary-btn invitation-btn">
+                  ENTER MY CHAPTER ✦
+                </button>
+              </form>
+
+              <!-- Transition Welcome Note (Initially Hidden) -->
+              <div id="transition-note" class="transition-note hidden">
+                <h3 id="welcome-message-text">Welcome, Hari Priya. ♡</h3>
+                <p>Your 22nd Chapter begins now...</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Room Decor Cluster -->
+        <div class="room-cluster right-cluster">
+          <!-- Birthday Cake with 22 Flickering Candles -->
+          <div class="decor-item cake-item interactive-decor" id="cake-interaction" role="button" tabindex="0" aria-label="Blow out the birthday candles">
+            <img src="assets/decorations/cake.svg" alt="Birthday Cake" class="birthday-cake-img">
+          </div>
+
+          <!-- Wrapped Gift Present -->
+          <div class="decor-item gift-item">
+            <div class="present-box">
+              <div class="present-ribbon-v"></div>
+              <div class="present-ribbon-h"></div>
+              <div class="present-bow">🎀</div>
+            </div>
+            <div class="sticky-note note-gift">
+              <p>For you ♡</p>
+            </div>
+          </div>
+
+          <!-- Handwritten Sticky Note Right -->
+          <div class="sticky-note note-right">
+            <p>You're about to enter your 22nd chapter... ♡</p>
+          </div>
+          <div class="sticky-note note-wish">
+            <p>Make a wish. ✨</p>
+          </div>
+        </div>
+
+      </div><!-- /.room-scene-wrapper -->
+
+      <!-- Bottom Table Surface Surface Decor & Handwritten "THE PLAN" Note -->
+      <div class="bottom-table-surface">
+        <div class="sticky-note plan-note">
+          <div class="plan-title">THE PLAN:</div>
+          <ol class="plan-list">
+            <li>Find the friends</li>
+            <li>Solve the mysteries</li>
+            <li>Unlock the gift</li>
+            <li>Celebrate ♡</li>
+          </ol>
+        </div>
+        <div class="table-quote-note">
+          <p>"The best things in life are the people we share it with. ♡"</p>
+        </div>
+        <div id="landing-fun-message" class="landing-fun-message" aria-live="polite"></div>
+      </div>
+
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- 2. MAIN GAME SCREEN — THE HIDDEN FRIENDS            -->
+    <!-- ==================================================== -->
+    <section id="game-screen" class="screen hidden">
+      <!-- Ambient Dream Background Layers (Glows, Mist, Bubbles, Sparkles) -->
+      <div class="page2-ambient-bg">
+        <div class="dream-radial-glow glow-top"></div>
+        <div class="dream-radial-glow glow-center"></div>
+        <div class="dream-radial-glow glow-bottom"></div>
+        <div class="dream-mist"></div>
+        <div id="p2-bubbles-container" class="dream-bubbles-wrapper"></div>
+        <div id="p2-sparkles-container" class="dream-sparkles-wrapper"></div>
+      </div>
+
+      <!-- Star Flight Canvas / Layer for Star Collection Animation -->
+      <div id="star-flight-layer" class="star-flight-layer"></div>
+
+      <!-- Compact Elegant Header -->
+      <header class="mystery-header">
+        <div class="chapter-branding">CHAPTER 22 ✦</div>
+        <h2 class="mystery-page-title">THE FRIENDS HIDING IN THIS CHAPTER</h2>
+        <p class="mystery-tagline">“You know them... you just have to remember who is who.”</p>
+
+        <!-- Friend Collection Indicator -->
+        <div class="friend-collection-box">
+          <div id="collection-stars-bar" class="collection-stars-bar">
+            <!-- 8 Stars rendered dynamically: ✦ ✦ ☆ ☆ ☆ ☆ ☆ ☆ -->
+          </div>
+          <div class="collection-counter-text">
+            <span id="friends-found-count">0</span> / <span id="friends-total-count">8</span> FRIENDS FOUND
+          </div>
+        </div>
+
+        <!-- Small Helpful Instruction -->
+        <div class="mystery-instruction-line">
+          <p class="instruction-lead">Pick a card... someone you know is hiding inside.</p>
+          <p class="instruction-sub">Trust your instincts. 👀</p>
+        </div>
+      </header>
+
+      <!-- Completion Banner (Appears when all 8 friends are found) -->
+      <div id="all-friends-completed-banner" class="completion-banner hidden">
+        <div class="completion-stars-sparkle">✦ ✦ ✦</div>
+        <h3 class="completion-heading">✦ EVERYONE'S HERE ✦</h3>
+        <p class="completion-sub">You found every person hiding inside Chapter 22.</p>
+        <p class="completion-teaser">And now... there's only one thing left.</p>
+        <div class="completion-gift-text">YOUR GIFT. 🎁</div>
+        <button id="open-gift-unlock-btn" class="primary-btn gift-unlock-btn" onclick="openGift()">
+          OPEN YOUR GIFT ✦
+        </button>
+      </div>
+
+      <!-- THE 8 INDIVIDUAL MYSTERY CARDS GALLERY (4 Top, 4 Bottom) -->
+      <main class="mystery-cards-gallery-wrapper">
+        <div id="cards-grid" class="cards-grid">
+          <!-- 8 individual floating memory cards rendered via JS -->
+        </div>
+      </main>
+
+      <!-- Discreet Restart Button -->
+      <footer class="mystery-footer">
+        <button id="restart-btn" class="text-link-btn">↻ Start the mystery again</button>
+      </footer>
+    </section>
+
+  </div><!-- /#app -->
+
+  <!-- ==================================================== -->
+  <!-- 3. EXPANDED MYSTERY CARD MODAL                       -->
+  <!-- ==================================================== -->
+  <div id="puzzle-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="expanded-card-wrapper">
+      <div id="expanded-card" class="expanded-card glass-card">
+        <button class="modal-close-btn" onclick="closePuzzleModal()" aria-label="Close mystery">✦ close</button>
+        
+        <div class="modal-header">
+          <span id="modal-mystery-num" class="mystery-badge">✦ MYSTERY #01 ✦</span>
+          <p class="mystery-hint-sub">“Someone is hiding here...”</p>
+        </div>
+
+        <div class="modal-body">
+          <div id="expanded-silhouette-frame" class="silhouette-preview-container">
+            <div class="silhouette-halo-glow"></div>
+            <img id="modal-silhouette-img" src="" alt="Mystery silhouette" class="modal-silhouette-thumb">
+          </div>
+
+          <div class="who-is-this-tag">WHO IS THIS?</div>
+
+          <p id="modal-question" class="question-text">
+            "Question goes here..."
+          </p>
+
+          <form id="answer-form" onsubmit="event.preventDefault(); checkAnswer();">
+            <div class="answer-input-wrapper">
+              <input 
+                type="text" 
+                id="answer-input" 
+                class="styled-input modal-input" 
+                placeholder="Who do you think it is?" 
+                autocomplete="off"
+              >
+            </div>
+
+            <div class="modal-actions">
+              <button type="submit" id="reveal-submit-btn" class="primary-btn submit-btn">✦ REVEAL THEM ✦</button>
+              <button type="button" id="toggle-hint-btn" class="secondary-btn hint-btn" onclick="toggleHint()">Need a little hint? ✦</button>
+            </div>
+          </form>
+
+          <!-- Feedback & Hint Messages -->
+          <div id="error-feedback" class="feedback-msg error-msg hidden"></div>
+          <div id="hint-box" class="hint-box hidden"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ==================================================== -->
+  <!-- 4. FRIEND REVEALED CELEBRATION MODAL                 -->
+  <!-- ==================================================== -->
+  <div id="reveal-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card glass-card celebration-card">
+      <button class="modal-close-btn" onclick="closeRevealModal()">&times;</button>
+      
+      <div class="reveal-header">
+        <div class="celebrate-badge">✨ MYSTERY SOLVED ✨</div>
+        <h3 class="reveal-title">You found them!</h3>
+      </div>
+
+      <div class="revealed-polaroid-frame">
+        <img id="reveal-friend-img" src="" alt="Revealed friend" class="revealed-friend-img">
+        <div class="found-stamp">✓ FOUND</div>
+      </div>
+
+      <h4 id="reveal-friend-name" class="friend-name-heading">Friend Name</h4>
+      <p id="reveal-friend-message" class="friend-personal-message">"Personal message..."</p>
+
+      <button class="primary-btn continue-btn" onclick="closeRevealModal()">
+        CONTINUE DISCOVERING ✦
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- 5. FINAL CHAPTER COMPLETE OVERLAY                    -->
+  <!-- ==================================================== -->
+  <div id="chapter-complete-screen" class="full-overlay hidden">
+    <div class="complete-content">
+      <div class="star-decor">✦ ✦ ✦</div>
+      <h2 class="complete-title">CHAPTER COMPLETE</h2>
+      
+      <div class="complete-text-sequence">
+        <p>You found everyone.</p>
+        <p>Every shadow. Every mystery. Every person.</p>
+        <p>And now...</p>
+        <p class="highlight-text">there's only one thing left.</p>
+      </div>
+
+      <div class="ready-banner">
+        <h3>YOUR GIFT IS READY.</h3>
+      </div>
+
+      <!-- Floating Animated Gift Box -->
+      <div class="floating-gift-container" onclick="openGift()">
+        <img src="assets/gift/giftbox.svg" alt="Gift Box" class="floating-gift-box">
+        <div class="gift-glow-aura"></div>
+      </div>
+
+      <button id="open-gift-btn" class="primary-btn gift-btn-pulse" onclick="openGift()">
+        OPEN YOUR GIFT 🎁
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- 6. FINAL GIFT REVEAL MODAL                           -->
+  <!-- ==================================================== -->
+  <div id="gift-modal" class="modal-overlay hidden" aria-hidden="true">
+    <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+    <div class="modal-card glass-card gift-modal-card">
+      <button class="modal-close-btn" onclick="closeGiftModal()">&times;</button>
+      
+      <div class="gift-header">
+        <span class="chapter-heart">❤️</span>
+        <h2 id="gift-heading" class="gift-title">Happy 22nd Birthday, <span id="gift-player-name">Haripriya</span> ❤️</h2>
+        <div class="subtitle-script">Welcome to Chapter 22</div>
+      </div>
+
+      <div id="gift-content-container" class="gift-body">
+        <!-- Dynamic Gift Payload Rendered via JS -->
+      </div>
+
+      <div class="gift-footer">
+        <button class="primary-btn" onclick="closeGiftModal()">CLOSE & REPLAY CHAPTER ✦</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- 7. RESTART CONFIRMATION MODAL                        -->
+  <!-- ==================================================== -->
+  <div id="restart-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-card glass-card mini-modal">
+      <h3 class="mini-modal-title">Restart Chapter?</h3>
+      <p class="mini-modal-desc">This will reset your discovered friends progress. Are you sure?</p>
+      <div class="mini-modal-actions">
+        <button class="secondary-btn" onclick="closeRestartModal()">Cancel</button>
+        <button class="danger-btn" onclick="confirmRestart()">Reset Progress</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Main Code -->
+  <script src="script.js"></script>
+</body>
+</html>

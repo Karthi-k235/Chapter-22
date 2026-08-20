@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sil-grad-7" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D1F33"/>
+      <stop offset="100%" stop-color="#190F1D"/>
+    </linearGradient>
+    <filter id="shadow-7" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#4A2855" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Silhouette 7: Half-up hair bun, holding latte/bag pose -->
+  <g filter="url(#shadow-7)">
+    <!-- Half Bun -->
+    <ellipse cx="100" cy="46" rx="9" ry="8" fill="url(#sil-grad-7)"/>
+    <!-- Head & Flowing Lower Hair -->
+    <path d="M 100,52 C 84,52 80,72 82,120 L 90,120 C 88,85 92,68 100,68 C 108,68 112,85 110,120 L 118,120 C 120,72 116,52 100,52 Z" fill="url(#sil-grad-7)"/>
+    <ellipse cx="100" cy="68" rx="13" ry="16" fill="url(#sil-grad-7)"/>
+    <!-- Torso -->
+    <path d="M 76,94 L 124,94 L 118,185 L 82,185 Z" fill="url(#sil-grad-7)"/>
+    <!-- Arm holding coffee cup in front -->
+    <path d="M 76,94 C 70,115 80,135 100,135 C 105,135 110,125 105,115 C 95,115 84,108 82,94 Z" fill="url(#sil-grad-7)"/>
+    <!-- Coffee cup -->
+    <rect x="98" y="118" width="10" height="15" rx="2" fill="url(#sil-grad-7)"/>
+    <!-- Legs -->
+    <path d="M 82,185 L 83,285 L 82,375 L 94,375 L 96,285 L 97,185 Z" fill="url(#sil-grad-7)"/>
+    <path d="M 103,185 L 104,285 L 105,375 L 117,375 L 116,285 L 115,185 Z" fill="url(#sil-grad-7)"/>
+    <!-- Boots -->
+    <path d="M 76,360 L 74,380 L 98,380 Z" fill="url(#sil-grad-7)"/>
+    <path d="M 102,360 L 104,380 L 126,380 Z" fill="url(#sil-grad-7)"/>
+  </g>
+  <path d="M 50,80 L 52,84 L 57,85 L 52,87 L 50,91 L 48,87 L 43,85 L 48,84 Z" fill="#E0F2FE" opacity="0.8"/>
+</svg>

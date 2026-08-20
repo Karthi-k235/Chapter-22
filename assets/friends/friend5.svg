@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE7F3"/>
+      <stop offset="100%" stop-color="#F472B6"/>
+    </linearGradient>
+    <filter id="card-shadow-5" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#8E5B74" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#card-shadow-5)">
+    <rect x="15" y="15" width="270" height="330" rx="16" fill="#FFFFFF"/>
+    <rect x="30" y="30" width="240" height="230" rx="12" fill="url(#bg5)"/>
+    <circle cx="150" cy="140" r="85" fill="#FFFDF9" opacity="0.6"/>
+    <!-- Friend Avatar 5 (Riya - Curly Bob Hair & Headphones) -->
+    <g transform="translate(0, 10)">
+      <path d="M 90,210 Q 150,170 210,210 L 220,260 L 80,260 Z" fill="#DB2777"/>
+      <rect x="140" y="145" width="20" height="30" rx="6" fill="#FCD5CE"/>
+      <ellipse cx="150" cy="125" rx="36" ry="42" fill="#FCD5CE"/>
+      <!-- Curly Bob Hair -->
+      <circle cx="114" cy="115" r="16" fill="#451A03"/>
+      <circle cx="110" cy="135" r="14" fill="#451A03"/>
+      <circle cx="186" cy="115" r="16" fill="#451A03"/>
+      <circle cx="190" cy="135" r="14" fill="#451A03"/>
+      <path d="M 118,105 C 120,70 140,70 160,70 C 180,70 182,105 182,105 Z" fill="#451A03"/>
+      <!-- Headphones over ears -->
+      <path d="M 108,125 C 108,70 192,70 192,125" stroke="#1F2937" stroke-width="5" fill="none"/>
+      <rect x="104" y="115" width="10" height="22" rx="4" fill="#1F2937"/>
+      <rect x="186" y="115" width="10" height="22" rx="4" fill="#1F2937"/>
+      <circle cx="136" cy="122" r="3.5" fill="#4A2E35"/>
+      <circle cx="164" cy="122" r="3.5" fill="#4A2E35"/>
+      <path d="M 140,138 Q 150,148 160,138" stroke="#D96B7E" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <circle cx="128" cy="130" r="5" fill="#F4978E" opacity="0.6"/>
+      <circle cx="172" cy="130" r="5" fill="#F4978E" opacity="0.6"/>
+    </g>
+    <text x="150" y="292" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle" fill="#2A1E2D">Riya</text>
+    <text x="150" y="315" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#DB2777">🎧 Swiftie Aux Master</text>
+  </g>
+  <text x="35" y="55" font-size="16">🎵</text>
+  <text x="240" y="55" font-size="16">💕</text>
+</svg>

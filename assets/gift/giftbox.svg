@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="box-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFECEC"/>
+      <stop offset="50%" stop-color="#F8C8DC"/>
+      <stop offset="100%" stop-color="#E88785"/>
+    </linearGradient>
+    <linearGradient id="lid-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0F5"/>
+      <stop offset="100%" stop-color="#F4978E"/>
+    </linearGradient>
+    <linearGradient id="ribbon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF3BF"/>
+      <stop offset="50%" stop-color="#F3E5AB"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <filter id="gift-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#F8C8DC" flood-opacity="0.6"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#D4AF37" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#gift-glow)">
+    <!-- Soft Aura behind gift box -->
+    <circle cx="120" cy="130" r="90" fill="#FFFDF9" opacity="0.4"/>
+
+    <!-- Main Gift Box Base -->
+    <rect x="45" y="110" width="150" height="100" rx="12" fill="url(#box-grad)"/>
+
+    <!-- Ribbon Vertical on Box -->
+    <rect x="106" y="110" width="28" height="100" fill="url(#ribbon-grad)"/>
+
+    <!-- Ribbon Horizontal on Box -->
+    <rect x="45" y="146" width="150" height="24" fill="url(#ribbon-grad)"/>
+
+    <!-- Box Lid -->
+    <rect x="35" y="85" width="170" height="35" rx="8" fill="url(#lid-grad)"/>
+    <rect x="106" y="85" width="28" height="35" fill="url(#ribbon-grad)"/>
+
+    <!-- Ribbon Bow Top -->
+    <!-- Left Loop -->
+    <path d="M 120,85 C 90,45 60,65 108,82 Z" fill="url(#ribbon-grad)"/>
+    <path d="M 120,85 C 95,50 70,70 110,82 Z" fill="#D4AF37" opacity="0.3"/>
+    <!-- Right Loop -->
+    <path d="M 120,85 C 150,45 180,65 132,82 Z" fill="url(#ribbon-grad)"/>
+    <path d="M 120,85 C 145,50 170,70 130,82 Z" fill="#D4AF37" opacity="0.3"/>
+    <!-- Center Knot -->
+    <ellipse cx="120" cy="84" rx="12" ry="9" fill="url(#ribbon-grad)" stroke="#D4AF37" stroke-width="1.5"/>
+
+    <!-- Floating Sparkles around box -->
+    <path d="M 30,70 L 33,78 L 41,81 L 33,84 L 30,92 L 27,84 L 19,81 L 27,78 Z" fill="#D4AF37"/>
+    <path d="M 205,60 L 207,65 L 212,67 L 207,69 L 205,74 L 203,69 L 198,67 L 203,65 Z" fill="#F8C8DC"/>
+    <path d="M 190,180 L 192,185 L 197,187 L 192,189 L 190,194 L 188,189 L 183,187 L 188,185 Z" fill="#D4AF37"/>
+    <path d="M 40,190 L 42,194 L 47,195 L 42,197 L 40,201 L 38,197 L 33,195 L 38,194 Z" fill="#F4978E"/>
+  </g>
+</svg>

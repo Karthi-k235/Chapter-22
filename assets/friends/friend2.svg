@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E6E6FA"/>
+      <stop offset="100%" stop-color="#D8B4F8"/>
+    </linearGradient>
+    <filter id="card-shadow-2" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#8E5B74" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#card-shadow-2)">
+    <rect x="15" y="15" width="270" height="330" rx="16" fill="#FFFFFF"/>
+    <rect x="30" y="30" width="240" height="230" rx="12" fill="url(#bg2)"/>
+    <circle cx="150" cy="140" r="85" fill="#FFFDF9" opacity="0.6"/>
+    <!-- Friend Avatar 2 (Sneha - Topknot Bun & Sunglasses) -->
+    <g transform="translate(0, 10)">
+      <path d="M 90,210 Q 150,170 210,210 L 220,260 L 80,260 Z" fill="#9D4EDD"/>
+      <rect x="140" y="145" width="20" height="30" rx="6" fill="#FCD5CE"/>
+      <ellipse cx="150" cy="125" rx="36" ry="42" fill="#FCD5CE"/>
+      <!-- Topknot Bun -->
+      <circle cx="150" cy="68" r="22" fill="#2B1E2A"/>
+      <path d="M 114,115 C 110,82 140,78 160,82 C 182,78 188,95 186,120 C 182,100 178,92 150,92 C 122,92 118,105 114,115 Z" fill="#2B1E2A"/>
+      <!-- Sunglasses -->
+      <rect x="122" y="112" width="24" height="16" rx="4" fill="#2B1E2A"/>
+      <rect x="154" y="112" width="24" height="16" rx="4" fill="#2B1E2A"/>
+      <line x1="146" y1="118" x2="154" y2="118" stroke="#2B1E2A" stroke-width="3"/>
+      <!-- Smile -->
+      <path d="M 140,140 Q 150,148 160,140" stroke="#D96B7E" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <!-- Cheeks -->
+      <circle cx="126" cy="132" r="5" fill="#F4978E" opacity="0.6"/>
+      <circle cx="174" cy="132" r="5" fill="#F4978E" opacity="0.6"/>
+    </g>
+    <text x="150" y="292" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle" fill="#2A1E2D">Sneha</text>
+    <text x="150" y="315" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#9D4EDD">👑 The Reel Director</text>
+  </g>
+  <text x="35" y="55" font-size="16">🎬</text>
+  <text x="240" y="55" font-size="16">✨</text>
+</svg>

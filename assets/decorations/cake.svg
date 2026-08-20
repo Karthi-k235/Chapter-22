@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cake-tier1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFECEC"/>
+      <stop offset="100%" stop-color="#F8C8DC"/>
+    </linearGradient>
+    <linearGradient id="cake-tier2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5F7"/>
+      <stop offset="100%" stop-color="#FFE5D9"/>
+    </linearGradient>
+    <linearGradient id="gold-trim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E5AB"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <radialGradient id="flame-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="60%" stop-color="#FF9933" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FF6600" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cake-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#4A2855" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#cake-shadow)">
+    <!-- Cake Stand Plate -->
+    <ellipse cx="100" cy="210" rx="90" ry="16" fill="#FFFDF9" stroke="#E6E6FA" stroke-width="2"/>
+    <ellipse cx="100" cy="215" rx="50" ry="8" fill="#F3E5AB"/>
+    <path d="M 90,215 L 85,230 L 115,230 L 110,215 Z" fill="#D4AF37"/>
+
+    <!-- Tier 1 (Bottom) -->
+    <path d="M 25,160 C 25,145 175,145 175,160 L 175,200 C 175,215 25,215 25,200 Z" fill="url(#cake-tier1)"/>
+    <ellipse cx="100" cy="160" rx="75" ry="14" fill="#FFFDF9"/>
+    <!-- Frosting Drips Bottom -->
+    <path d="M 25,160 Q 40,175 55,160 Q 70,178 85,160 Q 100,176 115,160 Q 130,178 145,160 Q 160,175 175,160 L 175,168 C 160,183 145,168 130,184 Q 115,168 100,184 Q 85,168 70,184 Q 55,168 40,184 Q 25,168 25,160 Z" fill="#FFFFFF" opacity="0.9"/>
+    <!-- Pearl Trim -->
+    <circle cx="40" cy="200" r="3" fill="url(#gold-trim)"/>
+    <circle cx="65" cy="204" r="3" fill="url(#gold-trim)"/>
+    <circle cx="90" cy="206" r="3" fill="url(#gold-trim)"/>
+    <circle cx="115" cy="206" r="3" fill="url(#gold-trim)"/>
+    <circle cx="140" cy="204" r="3" fill="url(#gold-trim)"/>
+    <circle cx="160" cy="200" r="3" fill="url(#gold-trim)"/>
+
+    <!-- Tier 2 (Top) -->
+    <path d="M 45,115 C 45,102 155,102 155,115 L 155,155 C 155,168 45,168 45,155 Z" fill="url(#cake-tier2)"/>
+    <ellipse cx="100" cy="115" rx="55" ry="12" fill="#FFFDF9"/>
+    <!-- Cream Swirl Top -->
+    <path d="M 45,115 Q 65,128 85,115 Q 105,129 125,115 Q 145,128 155,115 L 155,122 Q 135,135 115,122 Q 95,136 75,122 Q 55,135 45,122 Z" fill="#FFFFFF" opacity="0.95"/>
+
+    <!-- 22 Birthday Candles -->
+    <!-- Candle 1 (Digit '2') -->
+    <g transform="translate(68, 60)">
+      <path d="M 5,20 C 5,5 25,5 25,18 C 25,28 5,35 5,45 L 28,45 L 28,50 L 0,50 L 0,42 C 0,30 20,24 19,16 C 18,10 8,10 8,20 Z" fill="url(#gold-trim)"/>
+      <!-- Wick -->
+      <line x1="14" y1="5" x2="14" y2="-2" stroke="#333" stroke-width="1.5"/>
+      <!-- Flickering Flame -->
+      <g class="candle-flame">
+        <ellipse cx="14" cy="-8" rx="10" ry="12" fill="url(#flame-glow)"/>
+        <path d="M 14,-15 C 10,-8 11,-4 14,-2 C 17,-4 18,-8 14,-15 Z" fill="#FFF59D"/>
+        <path d="M 14,-12 C 12,-7 13,-4 14,-2 C 15,-4 16,-7 14,-12 Z" fill="#FFFFFF"/>
+      </g>
+    </g>
+
+    <!-- Candle 2 (Digit '2') -->
+    <g transform="translate(104, 60)">
+      <path d="M 5,20 C 5,5 25,5 25,18 C 25,28 5,35 5,45 L 28,45 L 28,50 L 0,50 L 0,42 C 0,30 20,24 19,16 C 18,10 8,10 8,20 Z" fill="url(#gold-trim)"/>
+      <!-- Wick -->
+      <line x1="14" y1="5" x2="14" y2="-2" stroke="#333" stroke-width="1.5"/>
+      <!-- Flickering Flame -->
+      <g class="candle-flame">
+        <ellipse cx="14" cy="-8" rx="10" ry="12" fill="url(#flame-glow)"/>
+        <path d="M 14,-15 C 10,-8 11,-4 14,-2 C 17,-4 18,-8 14,-15 Z" fill="#FFF59D"/>
+        <path d="M 14,-12 C 12,-7 13,-4 14,-2 C 15,-4 16,-7 14,-12 Z" fill="#FFFFFF"/>
+      </g>
+    </g>
+
+    <!-- Decorative Flowers on Cake -->
+    <circle cx="55" cy="155" r="7" fill="#F8C8DC"/>
+    <circle cx="55" cy="155" r="3" fill="#D4AF37"/>
+    <circle cx="145" cy="155" r="7" fill="#F8C8DC"/>
+    <circle cx="145" cy="155" r="3" fill="#D4AF37"/>
+    <circle cx="100" cy="112" r="6" fill="#E88785"/>
+    <circle cx="100" cy="112" r="2.5" fill="#FFFDF9"/>
+  </g>
+</svg>

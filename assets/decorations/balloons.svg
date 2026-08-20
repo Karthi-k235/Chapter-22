@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="100%" height="100%">
+  <defs>
+    <radialGradient id="balloon-pink" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#FFD6E7"/>
+      <stop offset="85%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#DB2777"/>
+    </radialGradient>
+    <radialGradient id="balloon-lavender" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#F3E8FF"/>
+      <stop offset="85%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#9333EA"/>
+    </radialGradient>
+    <radialGradient id="balloon-peach" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#FFEDD5"/>
+      <stop offset="85%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </radialGradient>
+    <radialGradient id="balloon-gold" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#FEF9C3"/>
+      <stop offset="85%" stop-color="#FACC15"/>
+      <stop offset="100%" stop-color="#CA8A04"/>
+    </radialGradient>
+    <filter id="balloon-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#4A2855" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#balloon-shadow)">
+    <!-- Ribbon Strings -->
+    <path d="M 70,140 C 65,180 85,220 80,300" stroke="#E88785" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <path d="M 120,110 C 130,160 110,210 125,300" stroke="#C084FC" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <path d="M 170,150 C 160,190 180,230 165,300" stroke="#FB923C" stroke-width="1.5" fill="none" opacity="0.7"/>
+    <path d="M 100,160 C 95,200 115,240 105,300" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity="0.7"/>
+
+    <!-- Balloon 1 (Back Left - Peach) -->
+    <g>
+      <ellipse cx="170" cy="100" rx="42" ry="52" fill="url(#balloon-peach)" opacity="0.9"/>
+      <polygon points="167,150 173,150 170,156" fill="#EA580C"/>
+    </g>
+
+    <!-- Balloon 2 (Back Right - Gold) -->
+    <g>
+      <ellipse cx="70" cy="90" rx="40" ry="50" fill="url(#balloon-gold)" opacity="0.9"/>
+      <polygon points="67,138 73,138 70,144" fill="#CA8A04"/>
+    </g>
+
+    <!-- Balloon 3 (Center Top - Lavender) -->
+    <g>
+      <ellipse cx="120" cy="60" rx="48" ry="58" fill="url(#balloon-lavender)" opacity="0.95"/>
+      <polygon points="117,116 123,116 120,122" fill="#9333EA"/>
+    </g>
+
+    <!-- Balloon 4 (Front Center - Pink) -->
+    <g>
+      <ellipse cx="105" cy="115" rx="52" ry="62" fill="url(#balloon-pink)"/>
+      <polygon points="102,175 108,175 105,181" fill="#DB2777"/>
+      <!-- Specular Highlight -->
+      <ellipse cx="85" cy="90" rx="12" ry="22" fill="#FFFFFF" opacity="0.45" transform="rotate(-25 85 90)"/>
+    </g>
+  </g>
+</svg>
