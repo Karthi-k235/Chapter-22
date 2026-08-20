@@ -80,6 +80,18 @@ To add a new friend (e.g. Friend #9), simply append another object to the `frien
 1. Simply double-click `index.html` or open it in any web browser (Chrome, Safari, Firefox, Edge, or mobile browser).
 2. Or serve it locally using any static web server (e.g., Python `python -m http.server 8000` or Live Server).
 
+## 🌐 Host on GitHub Pages
+
+This repository includes a GitHub Actions workflow at `.github/workflows/pages.yml`.
+
+1. Push the project files to the `main` branch.
+2. On GitHub, open **Settings → Pages**.
+3. Under **Build and deployment**, choose **GitHub Actions** as the source.
+4. The workflow will deploy the site automatically after each push to `main`.
+
+For this repository, the site URL will be:
+`https://karthi-k235.github.io/Chapter-22/`
+
 ---
 
 ## 🎨 Color Palette & Typography
