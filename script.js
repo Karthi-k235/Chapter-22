@@ -90,21 +90,21 @@ const friends = [
     id: 5,
     name: "Riya",
     silhouette: "assets/shill/final.png",
-    revealedImage: "assets/shill/final.png",
-    question: "Which friend plays Taylor Swift on repeat the second she gets the aux cord in the car?",
-    answers: ["riya", "taylor swift", "taylor", "swift", "ariana", "dupa lipa", "bts"],
-    hint: "She knows every single lyric from '1989' and 'Red'...",
-    message: "Happy 22nd Birthday Haripriya! Playing '22' on repeat for you all day today! 🎧🎶"
+    revealedImage: "assets/friends/friend5.png",
+    question: "Bunked an exam, my strict curfew, no buses in sight, and pure panic at the bus stand. Yet despite all the drama, the mission was completed by sharing a sweet treat. Which store was it from?",
+    answers: ["belgium waffle", "belgian waffle"],
+    hint: "It's a stunt to get the thing as well.",
+    message: "Even the most dramatic missions are sweeter when shared. Happy Birthday, Haripriya! 🧇💕"
   },
   {
     id: 6,
     name: "Kavya",
     silhouette: "assets/shill/final.png",
-    revealedImage: "assets/shill/final.png",
-    question: "Who goes full FBI detective mode the second someone sends a mysterious 2-word text?",
-    answers: ["kavya", "stalking", "fbi mode", "overthinking", "screenshots", "detective", "fbi"],
-    hint: "She finds their location, horoscope, and 2016 Facebook posts in 3 minutes flat...",
-    message: "Haripriya, you survived 21 chapters of chaos! Here's to making Chapter 22 even more legendary! 🕵️‍♀️✨"
+    revealedImage: "assets/friends/friend6.png",
+    question: "Remember when I spun a wildly steamy dating story that was so well-scripted you all actually believed it? Name the city where my legendary fake romance took place!",
+    answers: ["Hyderabad"],
+    hint: "Summer is great, right?",
+    message: "A legendary fake romance, a perfectly scripted story, and a city none of us forgot. Happy Birthday, Haripriya! 💕✨"
   },
   {
     id: 7,
