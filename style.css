@@ -3092,6 +3092,21 @@ html, body {
   display: block;
   border-radius: 14px;
   object-fit: contain;
+  cursor: pointer;
+  outline: none;
+}
+
+.storybook-hero-img:focus-visible {
+  box-shadow: 0 0 0 4px rgba(233, 135, 143, 0.45);
+}
+
+.storybook-hero-img.photo-gallery-changing {
+  animation: photoGalleryChange 0.35s ease;
+}
+
+@keyframes photoGalleryChange {
+  0% { opacity: 0.35; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 .storybook-hero-glow {

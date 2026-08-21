@@ -157,6 +157,27 @@ let gameState = {
 };
 
 const LOCAL_STORAGE_KEY = "chapter22Progress";
+const BACKGROUND_MUSIC_PLAYLIST = [
+  "assets/Pics/With%20Love.mp3",
+  "assets/Pics/metro.mp3",
+  "assets/Pics/7.mp3",
+  "assets/Pics/celeb.mp3"
+];
+let backgroundMusicIndex = 0;
+const backgroundMusic = new Audio(BACKGROUND_MUSIC_PLAYLIST[backgroundMusicIndex]);
+backgroundMusic.preload = 'auto';
+backgroundMusic.setAttribute('playsinline', '');
+backgroundMusic.volume = 0.35;
+
+backgroundMusic.addEventListener('ended', () => {
+  backgroundMusicIndex = (backgroundMusicIndex + 1) % BACKGROUND_MUSIC_PLAYLIST.length;
+  backgroundMusic.src = BACKGROUND_MUSIC_PLAYLIST[backgroundMusicIndex];
+  if (gameState.audioEnabled) {
+    backgroundMusic.play().catch((error) => {
+      console.warn("Next background song could not start", error);
+    });
+  }
+});
 
 // ==========================================
 // AUDIO SYNTHESIZER (Web Audio API)
@@ -215,12 +236,30 @@ function playAmbientSound(type = 'chime') {
   }
 }
 
+async function toggleBackgroundMusic(isEnabled) {
+  if (isEnabled) {
+    backgroundMusic.load();
+    try {
+      await backgroundMusic.play();
+    } catch (error) {
+      gameState.audioEnabled = false;
+      const btn = document.getElementById('audio-toggle-btn');
+      btn.querySelector('.audio-label').textContent = "Music Off";
+      btn.querySelector('.audio-icon').textContent = "🔇";
+      console.warn("Background music could not start", error);
+    }
+  } else {
+    backgroundMusic.pause();
+  }
+}
+
 // Toggle Audio
 document.getElementById('audio-toggle-btn').addEventListener('click', () => {
   gameState.audioEnabled = !gameState.audioEnabled;
   const btn = document.getElementById('audio-toggle-btn');
   btn.querySelector('.audio-label').textContent = gameState.audioEnabled ? "Sound On" : "Music Off";
   btn.querySelector('.audio-icon').textContent = gameState.audioEnabled ? "♫" : "🔇";
+  toggleBackgroundMusic(gameState.audioEnabled);
   if (gameState.audioEnabled) playAmbientSound('chime');
 });
 
@@ -836,8 +875,14 @@ function showFriendRevealModal(friend, isNewDiscovery = true) {
 // FINAL UNLOCK & GIFT SYSTEM (THE FINAL CHAPTER)
 // ==========================================
 
-const FINAL_GIFT_URL = "https://drive.google.com/"; // Paste your Google Drive video link here!
-const BIRTHDAY_GIRL_IMAGE = "assets/Pics/pic1.png"; // Dynamic birthday girl hero image
+const FINAL_GIFT_URL = "https://drive.google.com/file/d/1UWA_ErzOp8IbMkxsVx7EnKscpRo3LK--/view?usp=sharing";
+const BIRTHDAY_GIRL_IMAGES = [
+  "assets/Pics/pic1.png",
+  "assets/Pics/pic2.png",
+  "assets/Pics/pic3.png",
+  "assets/Pics/pic4.png"
+];
+let birthdayGirlImageIndex = 0;
 
 // Trigger the Transition from 8 Friends Solved to The Final Mystery
 function triggerFinalMysteryTransition() {
@@ -913,9 +958,21 @@ function initFinalMysteryScreen() {
     if (el) el.textContent = name;
   });
 
-  // Set hero image
+  // Set hero image gallery
   const girlImg = document.getElementById('final-birthday-girl-img');
-  if (girlImg) girlImg.src = BIRTHDAY_GIRL_IMAGE;
+  if (girlImg) {
+    girlImg.src = BIRTHDAY_GIRL_IMAGES[birthdayGirlImageIndex];
+    if (girlImg.dataset.galleryReady !== 'true') {
+      girlImg.addEventListener('click', showNextBirthdayPhoto);
+      girlImg.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          showNextBirthdayPhoto();
+        }
+      });
+      girlImg.dataset.galleryReady = 'true';
+    }
+  }
 
   // Generate ambient floating particles
   generateFinalParticles();
@@ -932,6 +989,18 @@ function initFinalMysteryScreen() {
     if (preReveal) preReveal.classList.remove('hidden');
     if (postReveal) postReveal.classList.add('hidden');
   }
+}
+
+function showNextBirthdayPhoto() {
+  const girlImg = document.getElementById('final-birthday-girl-img');
+  if (!girlImg) return;
+
+  birthdayGirlImageIndex = (birthdayGirlImageIndex + 1) % BIRTHDAY_GIRL_IMAGES.length;
+  girlImg.classList.remove('photo-gallery-changing');
+  void girlImg.offsetWidth;
+  girlImg.src = BIRTHDAY_GIRL_IMAGES[birthdayGirlImageIndex];
+  girlImg.alt = `Happy Birthday Haripriya - photo ${birthdayGirlImageIndex + 1} of ${BIRTHDAY_GIRL_IMAGES.length}`;
+  girlImg.classList.add('photo-gallery-changing');
 }
 
 // Generate floating ambient particles (stars, hearts, dots, sparkles)
