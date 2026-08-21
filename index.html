@@ -475,6 +475,20 @@
           <p class="closing-hope">Whatever comes next,<br>I hope Chapter 22 is only the beginning. ♡</p>
           <p class="closing-birthday">Happy Birthday, <span id="final-girl-name-sign">Haripriya</span>.</p>
           <p class="closing-from">— from all of us</p>
+            <button id="watch-video-btn" class="magical-reveal-btn final-video-trigger" onclick="openFinalVideoScene()">
+            <span class="btn-shine-sweep"></span>
+            <span class="btn-text">✦ WATCH OUR VIDEO ✦</span>
+          </button>
+        </div>
+
+        <div id="final-video-scene" class="final-video-scene hidden">
+          <div class="video-scene-heading">A little something from all of us ♡</div>
+          <video id="final-video-player" class="final-video-player" controls playsinline preload="metadata">
+            <source src="assets/Vid/Hari.mp4" type="video/mp4">
+            Your browser does not support HTML video.
+          </video>
+          <button class="text-link-btn final-video-back-btn" onclick="closeFinalVideoScene()">↩ Back to Chapter 22</button>
+        
         </div>
 
       </div><!-- /#final-post-reveal -->
