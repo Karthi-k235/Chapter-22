@@ -1211,6 +1211,28 @@ function openFinalGiftBox() {
     }
   }, 800);
 }
+function openFinalVideoScene() {
+  const videoScene = document.getElementById('final-video-scene');
+  const video = document.getElementById('final-video-player');
+  if (!videoScene || !video) return;
+
+  videoScene.classList.remove('hidden');
+  video.currentTime = 0;
+  video.play().catch((error) => {
+    console.warn("Final video could not start", error);
+  });
+
+  requestAnimationFrame(() => {
+    videoScene.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+function closeFinalVideoScene() {
+  const videoScene = document.getElementById('final-video-scene');
+  const video = document.getElementById('final-video-player');
+  if (video) video.pause();
+  if (videoScene) videoScene.classList.add('hidden');
+}
 
 // Trigger Google Drive Video
 function triggerFinalDriveVideo() {
