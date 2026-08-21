@@ -890,6 +890,12 @@ function triggerFinalMysteryTransition() {
       if (finalScreen) {
         finalScreen.classList.remove('hidden');
         initFinalMysteryScreen();
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: finalScreen.getBoundingClientRect().top + window.scrollY,
+            behavior: 'smooth'
+          });
+        });
       }
     }, 5200);
 
